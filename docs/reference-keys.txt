@@ -1,3 +1,10 @@
+ch01-intro
+c02-replicate-weights
+worked-example-mean-age-in-grade-2-benin
+c03-plausible-values
+worked-example-mean-language-proficiency-in-grade-2
+ch04-download
+ch05-resources
 c06-stata
 loading-data-in-stata
 applying-english-labels
@@ -28,10 +35,4 @@ estimating-pasec-proficiency-levels-1
 testing-for-differences-between-groups-1
 testing-for-differences-within-countries---differences-between-boys-and-girls-1
 testing-for-differences-between-countries-1
-ch01-intro
-c02-replicate-weights
-worked-example-mean-age-in-grade-2-benin
-c03-plausible-values
-worked-example-mean-language-proficiency-in-grade-2
-ch04-download
-ch05-resources
+multivariate-regression-1

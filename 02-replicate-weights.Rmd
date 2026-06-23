@@ -31,13 +31,9 @@ The student-level datasets contain:
 | Grade 2 | rwgt0        | rwgt1-rwgt45      |
 | Grade 6 | rwgt0        | rwgt1-rwgt90      |
 
-|         |       |              |
-|---------|-------|--------------|
-| Grade 6 | rwgt0 | rwgt1–rwgt90 |
+
 
 The final weight (rwgt0) is used to produce population estimates. The replicate weights are used to estimate standard errors.
-
-Most users can analyse PASEC data without understanding the mathematics behind replicate weights. However, if you'd like to learn more about how standard errors are calculated, click here to explore the paired jackknife method and variance estimation formula.
 
 Fortunately, researchers do not need to perform these calculations manually. R packages such as `Rrepest` and Stata's survey commands perform these calculations automatically.
 

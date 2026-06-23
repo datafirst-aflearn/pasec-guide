@@ -189,6 +189,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.6.3" data-path="c07-r.html"><a href="c07-r.html#moving-beyond-means-summary-statistics-with-rrepest"><i class="fa fa-check"></i><b>7.6.3</b> Moving beyond means: summary statistics with <code>Rrepest</code></a></li>
 <li class="chapter" data-level="7.6.4" data-path="c07-r.html"><a href="c07-r.html#estimating-pasec-proficiency-levels-1"><i class="fa fa-check"></i><b>7.6.4</b> Estimating PASEC proficiency levels</a></li>
 <li class="chapter" data-level="7.6.5" data-path="c07-r.html"><a href="c07-r.html#testing-for-differences-between-groups-1"><i class="fa fa-check"></i><b>7.6.5</b> Testing for differences between groups</a></li>
+<li class="chapter" data-level="7.6.6" data-path="c07-r.html"><a href="c07-r.html#multivariate-regression-1"><i class="fa fa-check"></i><b>7.6.6</b> Multivariate regression</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -252,17 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<table>
-<tbody>
-<tr class="odd">
-<td>Grade 6</td>
-<td>rwgt0</td>
-<td>rwgt1–rwgt90</td>
-</tr>
-</tbody>
-</table>
 <p>The final weight (rwgt0) is used to produce population estimates. The replicate weights are used to estimate standard errors.</p>
-<p>Most users can analyse PASEC data without understanding the mathematics behind replicate weights. However, if you’d like to learn more about how standard errors are calculated, click here to explore the paired jackknife method and variance estimation formula.</p>
 <p>Fortunately, researchers do not need to perform these calculations manually. R packages such as <code>Rrepest</code> and Stata’s survey commands perform these calculations automatically.</p>
 <p>The paired jackknife variance estimator can be written as:</p>
 <p><span class="math display">\[

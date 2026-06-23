@@ -3,10 +3,26 @@
 
 This section provides a practical introduction to analysing PASEC 2019 data in Stata using the `repest` package. It is intended for users with a basic working knowledge of Stata and includes step-by-step examples covering common PASEC analyses.
 
+```{r setup-stata, include=FALSE}
+library(Statamarkdown)
+
+stataexe <- "C:/Program Files/Stata18/StataMP-64.exe"
+root_dir <- normalizePath(".", winslash = "/", mustWork = TRUE)
+
+knitr::opts_chunk$set(
+  engine.path = list(stata = stataexe),
+  cache = FALSE
+)
+knitr::opts_knit$set(root.dir = root_dir)
+setwd(root_dir)
+
+# Statamarkdown collectcode uses profile.do in the knitting directory
+if (file.exists("profile.do")) unlink("profile.do")
+```
+
 ```{r}
 #| label: desc-styler
 #| include: false
-knitr::opts_chunk$set(tidy = 'styler')
 options(pillar.max_dec_width = 19)
 ```
 

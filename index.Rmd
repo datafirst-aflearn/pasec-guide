@@ -6,6 +6,9 @@ site: bookdown::bookdown_site
 library(Statamarkdown)
 
 stataexe = "C:/Program Files/Stata18/StataMP-64.exe"
-knitr::opts_chunk$set(engine.path = list(stata = stataexe), cache = FALSE)
+knitr::opts_chunk$set(
+  engine.path = list(stata = stataexe),
+  cache = FALSE
+)
 knitr::opts_knit$set(root.dir = normalizePath("."))
 ```

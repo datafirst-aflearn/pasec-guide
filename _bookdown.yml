@@ -1,6 +1,7 @@
 book_filename: "bookdownproj"
 output_dir: docs
 delete_merged_file: true
+knit_root_dir: "."
 edit: https://github.com/DataFirst-Courses/pasec-guide/edit/main/%s
 view: https://github.com/DataFirst-Courses/pasec-guide/blob/main/%s
 language:
