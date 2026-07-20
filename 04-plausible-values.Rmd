@@ -24,7 +24,7 @@ A plausible value is a random draw from the estimated distribution of proficienc
 -   characteristics of the students, their teachers and their schools. 
 
 ::: alternativebox-header
-`r if (knitr:::is_html_output()) '### Warning {- #alt5}'`
+`r if (knitr:::is_html_output()) '### Caution {- #alt5}'`
 :::
 
 ::: {.alternativebox data-latex="{Warning}"}
@@ -43,7 +43,7 @@ Rather than assigning a single score, PASEC provides 5 plausible values for each
 
 These plausible values should be viewed as multiple imputations of latent proficiency
 
-**How are plausible values combined?** 
+**How are plausible values combined?**
 
 Suppose we wish to estimate a population parameter $Q$ such as a mean mathematics score, using $M$ plausible values.
 
@@ -55,7 +55,7 @@ $$
 
 where $Q_m$ is the estimate obtained using plausible value $m$.
 
-**Step 1: Calculate the final point estimate**
+**Step 1: Calculate the final point estimate**
 
 The final estimate is simply the average across the plausible values: $$
 \bar{Q} = \frac{1}{M} \sum_{m=1}^{M} Q_m

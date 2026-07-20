@@ -2,7 +2,6 @@
 
 This section provides a practical introduction to analysing PASEC 2019 data in R. It is intended for users with a basic working knowledge of R and includes step-by-step examples covering common PASEC analyses.
 
-Use the contents below to navigate directly to the topics most relevant to your analysis.
 
 ## Package installation
 
@@ -14,7 +13,7 @@ install.packages(c('Rrepest', 'haven', 'survey', 'mitools', 'quantreg', 'tidyver
 
 -   The `haven` package is needed to read Stata files.
 -   The `Rrepest` package automates the handling of plausible values and replicate weights, making it easier to analyse PASEC data correctly in R. It supports a range of common analyses, including means, summary statistics, frequency distributions, quantiles, correlations, group comparisons, and regression models. Throughout this guide we introduce the commands needed for common PASEC analyses.
--   The `survey` and `mitools` packages are used only for the alternatives analyses shown in ....
+-   The `survey` and `mitools` packages complements `Rrepest`
 -   While the `tidyverse` package is for data wrangling.
 
 You only need to run `install.packages()` once; there is no need to reinstall each time you open R.
@@ -54,7 +53,7 @@ After loading the file, let’s check if we have the most important variables th
 
 ```{r}
 # Confirm key variables exist 
-key_vars <- c('LECT_PV1','LECT_PV5','MATHS_PV1','MATHS_PV5', 
+key_vars = c('LECT_PV1','LECT_PV5','MATHS_PV1','MATHS_PV5', 
               'ID_PAYS','rwgt0','rwgt1','rwgt45') 
 stopifnot(all(key_vars %in% names(g2))) 
 

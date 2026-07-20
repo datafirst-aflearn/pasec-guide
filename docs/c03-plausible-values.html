@@ -173,7 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="c03-plausible-values.html"><a href="c03-plausible-values.html"><i class="fa fa-check"></i><b>4</b> What are plausible values?</a>
 <ul>
-<li class="chapter" data-level="" data-path="c03-plausible-values.html"><a href="c03-plausible-values.html#alt5"><i class="fa fa-check"></i>Warning</a></li>
+<li class="chapter" data-level="" data-path="c03-plausible-values.html"><a href="c03-plausible-values.html#alt5"><i class="fa fa-check"></i>Caution</a></li>
 <li class="chapter" data-level="4.1" data-path="c03-plausible-values.html"><a href="c03-plausible-values.html#worked-example-mean-language-proficiency-in-grade-2"><i class="fa fa-check"></i><b>4.1</b> Worked example: mean language proficiency in Grade 2</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ch04-download.html"><a href="ch04-download.html"><i class="fa fa-check"></i><b>5</b> Downloading the data</a></li>
@@ -184,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="c06-stata.html"><a href="c06-stata.html#applying-english-labels"><i class="fa fa-check"></i><b>7.2</b> Applying English labels</a></li>
 <li class="chapter" data-level="7.3" data-path="c06-stata.html"><a href="c06-stata.html#the-repest-package"><i class="fa fa-check"></i><b>7.3</b> The <code>repest</code> package</a></li>
 <li class="chapter" data-level="7.4" data-path="c06-stata.html"><a href="c06-stata.html#repest-command-syntax"><i class="fa fa-check"></i><b>7.4</b> <code>repest</code> command syntax</a></li>
-<li class="chapter" data-level="7.5" data-path="c06-stata.html"><a href="c06-stata.html#before-you-begin-set-up-repest-for-pasec"><i class="fa fa-check"></i><b>7.5</b> Before You begin: Set up <code>repest</code> for PASEC</a></li>
+<li class="chapter" data-level="7.5" data-path="c06-stata.html"><a href="c06-stata.html#before-you-begin-set-up-repest-for-pasec"><i class="fa fa-check"></i><b>7.5</b> Before you begin: Set up <code>repest</code> for PASEC</a></li>
 <li class="chapter" data-level="7.6" data-path="c06-stata.html"><a href="c06-stata.html#pasec-analyses-examples"><i class="fa fa-check"></i><b>7.6</b> PASEC Analyses Examples</a>
 <ul>
 <li class="chapter" data-level="7.6.1" data-path="c06-stata.html"><a href="c06-stata.html#calculating-mean-age"><i class="fa fa-check"></i><b>7.6.1</b> Calculating Mean Age</a></li>
@@ -259,7 +259,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>characteristics of the students, their teachers and their schools. </li>
 </ul>
 <div id="alt5" class="section level3 unnumbered hasAnchor alternativebox-header">
-<h3>Warning<a href="c03-plausible-values.html#alt5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<h3>Caution<a href="c03-plausible-values.html#alt5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 </div>
 <div class="alternativebox">
 <p>This conditioning on background variables is important because plausible values are generated partly using questionnaire responses. This means that some degree of dependency is introduced between the achievement variables and the background variables. For standard descriptive and associational analyses this is exactly what the methodology is designed for and should not cause concern. However, analysts building complex structural models should be aware of this feature.</p>
@@ -328,14 +328,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>These plausible values should be viewed as multiple imputations of latent proficiency</p>
-<p><strong>How are plausible values combined?</strong> </p>
+<p><strong>How are plausible values combined?</strong></p>
 <p>Suppose we wish to estimate a population parameter <span class="math inline">\(Q\)</span> such as a mean mathematics score, using <span class="math inline">\(M\)</span> plausible values.</p>
 <p>First, the statistic is estimated separately using each plausible value:</p>
 <p><span class="math display">\[
 Q_1, Q_2, Q_3, Q_4, Q_5
 \]</span></p>
 <p>where <span class="math inline">\(Q_m\)</span> is the estimate obtained using plausible value <span class="math inline">\(m\)</span>.</p>
-<p><strong>Step 1: Calculate the final point estimate</strong></p>
+<p><strong>Step 1: Calculate the final point estimate</strong></p>
 <p>The final estimate is simply the average across the plausible values: <span class="math display">\[
 \bar{Q} = \frac{1}{M} \sum_{m=1}^{M} Q_m
 \]</span> For PASEC: <span class="math display">\[

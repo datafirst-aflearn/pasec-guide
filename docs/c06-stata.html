@@ -173,7 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="c03-plausible-values.html"><a href="c03-plausible-values.html"><i class="fa fa-check"></i><b>4</b> What are plausible values?</a>
 <ul>
-<li class="chapter" data-level="" data-path="c03-plausible-values.html"><a href="c03-plausible-values.html#alt5"><i class="fa fa-check"></i>Warning</a></li>
+<li class="chapter" data-level="" data-path="c03-plausible-values.html"><a href="c03-plausible-values.html#alt5"><i class="fa fa-check"></i>Caution</a></li>
 <li class="chapter" data-level="4.1" data-path="c03-plausible-values.html"><a href="c03-plausible-values.html#worked-example-mean-language-proficiency-in-grade-2"><i class="fa fa-check"></i><b>4.1</b> Worked example: mean language proficiency in Grade 2</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="ch04-download.html"><a href="ch04-download.html"><i class="fa fa-check"></i><b>5</b> Downloading the data</a></li>
@@ -184,7 +184,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.2" data-path="c06-stata.html"><a href="c06-stata.html#applying-english-labels"><i class="fa fa-check"></i><b>7.2</b> Applying English labels</a></li>
 <li class="chapter" data-level="7.3" data-path="c06-stata.html"><a href="c06-stata.html#the-repest-package"><i class="fa fa-check"></i><b>7.3</b> The <code>repest</code> package</a></li>
 <li class="chapter" data-level="7.4" data-path="c06-stata.html"><a href="c06-stata.html#repest-command-syntax"><i class="fa fa-check"></i><b>7.4</b> <code>repest</code> command syntax</a></li>
-<li class="chapter" data-level="7.5" data-path="c06-stata.html"><a href="c06-stata.html#before-you-begin-set-up-repest-for-pasec"><i class="fa fa-check"></i><b>7.5</b> Before You begin: Set up <code>repest</code> for PASEC</a></li>
+<li class="chapter" data-level="7.5" data-path="c06-stata.html"><a href="c06-stata.html#before-you-begin-set-up-repest-for-pasec"><i class="fa fa-check"></i><b>7.5</b> Before you begin: Set up <code>repest</code> for PASEC</a></li>
 <li class="chapter" data-level="7.6" data-path="c06-stata.html"><a href="c06-stata.html#pasec-analyses-examples"><i class="fa fa-check"></i><b>7.6</b> PASEC Analyses Examples</a>
 <ul>
 <li class="chapter" data-level="7.6.1" data-path="c06-stata.html"><a href="c06-stata.html#calculating-mean-age"><i class="fa fa-check"></i><b>7.6.1</b> Calculating Mean Age</a></li>
@@ -358,9 +358,8 @@ rwgt45          double  %10.0g                Student replicate weight 45</code>
 </ul>
 </div>
 <div id="before-you-begin-set-up-repest-for-pasec" class="section level2 hasAnchor" number="7.5">
-<h2><span class="header-section-number">7.5</span> Before You begin: Set up <code>repest</code> for PASEC<a href="c06-stata.html#before-you-begin-set-up-repest-for-pasec" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<h2><span class="header-section-number">7.5</span> Before you begin: Set up <code>repest</code> for PASEC<a href="c06-stata.html#before-you-begin-set-up-repest-for-pasec" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>PASEC is not one of the studies supported by the repest package so you will need to use <em>SVY</em> for <code>svyname</code> and specify the survey parameters directly within the <code>svyparm</code> option.</p>
-<p>Throughout this guide we use the <em>SVY</em> option in repest because PASEC is not one of the assessments with built-in survey specifications. All survey parameters must therefore be supplied explicitly using the <code>svyparm()</code> option.</p>
 <p>PASEC uses the paired Jackknife method for creating the replicate weights. There are 90 replicate weights in the Grade 6 data and 45 replicate weights in the Grade 2 data. The final weight is given by <em>rwgt0</em>, the replicate weights are <em>rwgt1</em> to <em>rwgt90</em> in the Grade 6 data and <em>rwgt1</em> to <em>rwgt45</em> in the Grade 2 data. There are five sets of plausible values for each of mathematics, <em>MATHS_PV1</em> to <em>MATHS_PV5</em> and language <em>LECT_PV1</em> to <em>LECT_PV5</em>.</p>
 <p>The required parameters are as follows:</p>
 <table>
@@ -469,8 +468,8 @@ rwgt45          double  %10.0g                Student replicate weight 45</code>
 <div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="c06-stata.html#cb15-1" tabindex="-1"></a>*Calculating average age <span class="kw">in</span> Benin </span>
 <span id="cb15-2"><a href="c06-stata.html#cb15-2" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="c06-stata.html#cb15-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==1&amp;qe22&lt;99, estimate(<span class="kw">mean</span> qe22) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(45) variancefactor(1)) </span></code></pre></div>
-<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_912c_000005.tmp not found)
-file C:\Users\cash\AppData\Local\Temp\ST_912c_000005.tmp saved
+<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_1127c_000005.tmp not found)
+file C:\Users\cash\AppData\Local\Temp\ST_1127c_000005.tmp saved
 
 _pooled.
  : _pooled
@@ -524,8 +523,8 @@ _pooled.
 <div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="c06-stata.html#cb20-1" tabindex="-1"></a>*Calculating <span class="kw">mean</span> mathematics scores <span class="kw">in</span> Benin </span>
 <span id="cb20-2"><a href="c06-stata.html#cb20-2" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="c06-stata.html#cb20-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==1, estimate(<span class="kw">mean</span> MATHS_PV@) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(45) variancefactor(1))</span></code></pre></div>
-<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_a0a0_000005.tmp not found)
-file C:\Users\cash\AppData\Local\Temp\ST_a0a0_000005.tmp saved
+<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_2a5c_000005.tmp not found)
+file C:\Users\cash\AppData\Local\Temp\ST_2a5c_000005.tmp saved
 
 _pooled.....
  : _pooled
@@ -550,8 +549,8 @@ _pooled.....
 <span id="cb23-2"><a href="c06-stata.html#cb23-2" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="c06-stata.html#cb23-3" tabindex="-1"></a>repest SVY, estimate(<span class="kw">mean</span> MATHS_PV@ LECT_PV@) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(45) variancefactor(1)) <span class="kw">by</span>(ID_PAYS) </span></code></pre></div>
 <pre><code>1 2 3 4 5 6 7 8 9 10 11 12 13 14
-(file C:\Users\cash\AppData\Local\Temp\ST_9148_000005.tmp not found)
-file C:\Users\cash\AppData\Local\Temp\ST_9148_000005.tmp saved
+(file C:\Users\cash\AppData\Local\Temp\ST_10670_000005.tmp not found)
+file C:\Users\cash\AppData\Local\Temp\ST_10670_000005.tmp saved
 
 1.....
 ID_PAYS : 1
@@ -694,8 +693,8 @@ ID_PAYS : 14
 <pre><code>(28 missing values generated)
 
 0 1
-(file C:\Users\cash\AppData\Local\Temp\ST_8294_000005.tmp not found)
-file C:\Users\cash\AppData\Local\Temp\ST_8294_000005.tmp saved
+(file C:\Users\cash\AppData\Local\Temp\ST_116a4_000005.tmp not found)
+file C:\Users\cash\AppData\Local\Temp\ST_116a4_000005.tmp saved
 
 0.....
 girl : 0
@@ -729,8 +728,8 @@ MATHS_PV_~95 |   682.0938    23.3877    29.16   0.000     636.2547    727.9328
 <div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="c06-stata.html#cb27-1" tabindex="-1"></a>*Quintile <span class="kw">table</span> <span class="kw">for</span> mathematics and language <span class="kw">in</span> Benin </span>
 <span id="cb27-2"><a href="c06-stata.html#cb27-2" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="c06-stata.html#cb27-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==1, estimate(quantiletable MATHS_PV@ LECT_PV@, nquantiles(5)) svyparm(NBpv(5)  final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(45) variancefactor(1)) </span></code></pre></div>
-<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_29e4_000005.tmp not found)
-file C:\Users\cash\AppData\Local\Temp\ST_29e4_000005.tmp saved
+<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_ba4_000005.tmp not found)
+file C:\Users\cash\AppData\Local\Temp\ST_ba4_000005.tmp saved
 
 _pooled.....
  : _pooled
@@ -797,8 +796,8 @@ MATHS_PV__q5 |   675.3612   18.45676    36.59   0.000     639.1866    711.5358
 <span id="cb29-13"><a href="c06-stata.html#cb29-13" tabindex="-1"></a>} </span>
 <span id="cb29-14"><a href="c06-stata.html#cb29-14" tabindex="-1"></a></span>
 <span id="cb29-15"><a href="c06-stata.html#cb29-15" tabindex="-1"></a>repest SVY  <span class="kw">if</span> ID_PAYS==1, estimate(<span class="kw">mean</span> prop1_MATHS_PV@ prop2_MATHS_PV@ prop3_MATHS_PV@ prop4_MATHS_PV@ ) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(45) variancefactor(1)) </span></code></pre></div>
-<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_a784_000005.tmp not found)
-file C:\Users\cash\AppData\Local\Temp\ST_a784_000005.tmp saved
+<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_e5ec_000005.tmp not found)
+file C:\Users\cash\AppData\Local\Temp\ST_e5ec_000005.tmp saved
 
 _pooled.....
  : _pooled
@@ -849,8 +848,8 @@ prop4_MATH~_ |   .2885734   .0256526    11.25   0.000     .2382951    .3388516
 <div class="sourceCode" id="cb31"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb31-1"><a href="c06-stata.html#cb31-1" tabindex="-1"></a>*Test <span class="kw">for</span> differences between boys and girls mathematics scores <span class="kw">in</span> Benin</span>
 <span id="cb31-2"><a href="c06-stata.html#cb31-2" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="c06-stata.html#cb31-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==1, estimate(<span class="kw">reg</span> MATHS_PV@ girl) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(45) variancefactor(1)) </span></code></pre></div>
-<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_7208_000005.tmp not found)
-file C:\Users\cash\AppData\Local\Temp\ST_7208_000005.tmp saved
+<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_70ac_000005.tmp not found)
+file C:\Users\cash\AppData\Local\Temp\ST_70ac_000005.tmp saved
 
 _pooled.....
  : _pooled
@@ -865,8 +864,8 @@ _pooled.....
 <div class="sourceCode" id="cb33"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb33-1"><a href="c06-stata.html#cb33-1" tabindex="-1"></a>*Test differences between boys and girls <span class="kw">in</span> percentage reaching PASEC <span class="dv">level</span> 4 <span class="kw">in</span> Benin</span>
 <span id="cb33-2"><a href="c06-stata.html#cb33-2" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="c06-stata.html#cb33-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==1, estimate(<span class="kw">reg</span> prop4_MATHS_PV@  girl) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(45) variancefactor(1)) </span></code></pre></div>
-<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_48bc_000005.tmp not found)
-file C:\Users\cash\AppData\Local\Temp\ST_48bc_000005.tmp saved
+<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_113d8_000005.tmp not found)
+file C:\Users\cash\AppData\Local\Temp\ST_113d8_000005.tmp saved
 
 _pooled.....
  : _pooled
@@ -884,8 +883,8 @@ _pooled.....
 <div class="sourceCode" id="cb35"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb35-1"><a href="c06-stata.html#cb35-1" tabindex="-1"></a>*Test differences <span class="kw">in</span> mathematics scores between Benin and Burkina Faso </span>
 <span id="cb35-2"><a href="c06-stata.html#cb35-2" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="c06-stata.html#cb35-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS&lt;=2, estimate(<span class="kw">reg</span> MATHS_PV@ i.ID_PAYS) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(45) variancefactor(1))  </span></code></pre></div>
-<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_6328_000005.tmp not found)
-file C:\Users\cash\AppData\Local\Temp\ST_6328_000005.tmp saved
+<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_2c60_000005.tmp not found)
+file C:\Users\cash\AppData\Local\Temp\ST_2c60_000005.tmp saved
 
 _pooled.....
  : _pooled
@@ -912,8 +911,8 @@ _pooled.....
 <div class="sourceCode" id="cb37"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb37-1"><a href="c06-stata.html#cb37-1" tabindex="-1"></a>*Test <span class="kw">for</span> differences <span class="fu">at</span> the 25th and 75th percentile between boys and girls <span class="kw">in</span> Benin </span>
 <span id="cb37-2"><a href="c06-stata.html#cb37-2" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="c06-stata.html#cb37-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==1, estimate(<span class="kw">qreg</span> MATHS_PV@ girl, <span class="kw">quantile</span>(0.25)) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(45) variancefactor(1))</span></code></pre></div>
-<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_4d9c_000005.tmp not found)
-file C:\Users\cash\AppData\Local\Temp\ST_4d9c_000005.tmp saved
+<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_11d30_000005.tmp not found)
+file C:\Users\cash\AppData\Local\Temp\ST_11d30_000005.tmp saved
 
 _pooled.....
  : _pooled
@@ -924,8 +923,8 @@ _pooled.....
        _cons |   460.3875   7.622528    60.40   0.000     445.4476    475.3274
 ------------------------------------------------------------------------------</code></pre>
 <div class="sourceCode" id="cb39"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb39-1"><a href="c06-stata.html#cb39-1" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==1, estimate(<span class="kw">qreg</span> MATHS_PV@ girl, <span class="kw">quantile</span>(0.75)) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(45) variancefactor(1))  </span></code></pre></div>
-<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_743c_000005.tmp not found)
-file C:\Users\cash\AppData\Local\Temp\ST_743c_000005.tmp saved
+<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_119e4_000005.tmp not found)
+file C:\Users\cash\AppData\Local\Temp\ST_119e4_000005.tmp saved
 
 _pooled.....
  : _pooled
@@ -970,8 +969,8 @@ qe61d: all characters numeric; replaced as byte</code></pre>
 <div class="sourceCode" id="cb48"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb48-1"><a href="c06-stata.html#cb48-1" tabindex="-1"></a>*Association between mathematics scores and socio-economic status and gender </span>
 <span id="cb48-2"><a href="c06-stata.html#cb48-2" tabindex="-1"></a></span>
 <span id="cb48-3"><a href="c06-stata.html#cb48-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==6, estimate(<span class="kw">reg</span> MATHS_PV@ ses girl) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(90) variancefactor(1)) results(add(r2 <span class="kw">N</span>)) </span></code></pre></div>
-<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_52dc_000005.tmp not found)
-file C:\Users\cash\AppData\Local\Temp\ST_52dc_000005.tmp saved
+<pre><code>(file C:\Users\cash\AppData\Local\Temp\ST_6e0_000005.tmp not found)
+file C:\Users\cash\AppData\Local\Temp\ST_6e0_000005.tmp saved
 
 _pooled.....
  : _pooled

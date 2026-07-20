@@ -17,5 +17,6 @@ rmd_files:
   - 06-resources.Rmd
   - 07-stata.Rmd
   - 08-r.Rmd
+  - 09-references.Rmd
 after_render: ["R/publish-nav.R"]
 

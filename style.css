@@ -189,19 +189,23 @@ li.appendix span, li.part span { /* for TOC part names */
 
 /*--- LOGO ---*/
 .toc-logo {
-    width: 150px !important;
-    object-fit: contain;
-    margin: 0 auto;
+    background-color: #0B1F3A;
+    width: 100% !important;
+    box-sizing: border-box;
+    padding: 14px 20px;
+    margin: 0;
     display: block;
 }
 
 .toc-logo img {
-    max-width: 100%;
-    margin-bottom: -10px;
+    max-width: 150px;
+    display: block;
+    margin: 0 auto;
 }
 
 .summary > li:first-child {
     height: auto !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Home navigation */

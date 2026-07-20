@@ -1,0 +1,31 @@
+# References {#references}
+
+- Avvisati, F., & Keslair, F. (2026). REPEST: Stata module to run estimations with weighted replicate samples and plausible values (Statistical Software Components No. S457918). Boston College Department of Economics. [https://ideas.repec.org/c/boc/bocode/s457918.html](https://ideas.repec.org/c/boc/bocode/s457918.html)
+
+- Ilizaliturri, R., Avvisati, F., & Keslair, F. (2026). Rrepest: An analyzer of international large-scale assessments in education [R package]. Comprehensive R Archive Network. [https://CRAN.R-project.org/package=Rrepest](https://CRAN.R-project.org/package=Rrepest)
+
+- Koenker, R. (2025). quantreg: Quantile regression [R package]. Comprehensive R Archive Network. [https://CRAN.R-project.org/package=quantreg](https://CRAN.R-project.org/package=quantreg)
+
+- Lumley, T. (2019). mitools [R package]. Comprehensive R Archive Network. [https://CRAN.R-project.org/package=mitools](https://CRAN.R-project.org/package=mitools)
+
+- Lumley, T. (2025). survey: Analysis of complex survey samples [R package]. Comprehensive R Archive Network. [https://CRAN.R-project.org/package=survey](https://CRAN.R-project.org/package=survey)
+
+- Posit Team. (2025). RStudio: Integrated development environment for R. Posit Software. [https://posit.co/](https://posit.co/)
+
+- Programme d'Analyse des Systèmes Éducatifs de la CONFEMEN. (2020). PASEC 2019 data operations manual for international evaluation. CONFEMEN. [https://pasec.confemen.org/en/data-portal](https://pasec.confemen.org/en/data-portal)
+
+- Programme d'Analyse des Systèmes Éducatifs de la CONFEMEN. (2020). PASEC 2019: Quality of education systems in French-speaking Sub-Saharan Africa: Performance and teaching-learning environment in primary education. CONFEMEN. [http://pasec.confemen.org/fr](http://pasec.confemen.org/fr)
+
+- R Core Team. (2026). R: A language and environment for statistical computing. R Foundation for Statistical Computing. [https://www.R-project.org/](https://www.R-project.org/)
+
+- StataCorp. (2025). Stata Statistical Software: Release 19. StataCorp LLC. [https://www.stata.com](https://www.stata.com)
+
+- Wickham, H. (2025). stringr: Simple, consistent wrappers for common string operations [R package]. Comprehensive R Archive Network. [https://CRAN.R-project.org/package=stringr](https://CRAN.R-project.org/package=stringr)
+
+- Wickham, H. (2025). tidyverse: Easily install and load the tidyverse [R package]. Comprehensive R Archive Network. [https://CRAN.R-project.org/package=tidyverse](https://CRAN.R-project.org/package=tidyverse)
+
+- Wickham, H., François, R., Henry, L., Müller, K., & Vaughan, D. (2026). dplyr: A grammar of data manipulation [R package]. Comprehensive R Archive Network. [https://CRAN.R-project.org/package=dplyr](https://CRAN.R-project.org/package=dplyr)
+
+- Wickham, H., Hester, J., & Bryan, J. (2026). readr: Read rectangular text data [R package]. Comprehensive R Archive Network. [https://CRAN.R-project.org/package=readr](https://CRAN.R-project.org/package=readr)
+
+- Wickham, H., Miller, E., & Smith, D. (2025). haven [R package]. Comprehensive R Archive Network. [https://CRAN.R-project.org/package=haven](https://CRAN.R-project.org/package=haven)

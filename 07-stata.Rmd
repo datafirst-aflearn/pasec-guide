@@ -82,11 +82,9 @@ repest svyname [if] [in] , estimate(cmd [,cmd_options]) [options]
 
 -   `estimate(cmd [,cmd_options)`: Specifies the statistical command to run. `cmd` can be any Stata command that accepts weights — for example, `mean`, `reg`, `qreg`, or the built-in repest commands `means`, `freq`, `summarize`, `corr` and `quantiletable`. Command-specific options are passed after a comma within the parentheses.
 
-## Before You begin: Set up `repest` for PASEC
+## Before you begin: Set up `repest` for PASEC
 
 PASEC is not one of the studies supported by the repest package so you will need to use *SVY* for `svyname` and specify the survey parameters directly within the `svyparm` option.
-
-Throughout this guide we use the *SVY* option in repest because PASEC is not one of the assessments with built-in survey specifications. All survey parameters must therefore be supplied explicitly using the `svyparm()` option.
 
 PASEC uses the paired Jackknife method for creating the replicate weights. There are 90 replicate weights in the Grade 6 data and 45 replicate weights in the Grade 2 data. The final weight is given by *rwgt0*, the replicate weights are *rwgt1* to *rwgt90* in the Grade 6 data and *rwgt1* to *rwgt45* in the Grade 2 data. There are five sets of plausible values for each of mathematics, *MATHS_PV1* to *MATHS_PV5* and language *LECT_PV1* to *LECT_PV5*.
 
