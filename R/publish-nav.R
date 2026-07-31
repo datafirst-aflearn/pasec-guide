@@ -64,8 +64,8 @@ file.copy(nav_html, file.path(docs_dir, "nav-guide.html"), overwrite = TRUE)
 files_src <- file.path(root, "files")
 files_dst <- file.path(docs_dir, "files")
 if (dir.exists(files_src)) {
-  dir.create(files_dst, recursive = TRUE, showWarnings = FALSE)
-  file.copy(files_src, files_dst, recursive = TRUE, overwrite = TRUE)
+  # Copy into docs/ so the result is docs/files/... (not docs/files/files/...)
+  file.copy(files_src, dirname(files_dst), recursive = TRUE, overwrite = TRUE)
 }
 
 message("Landing page installed: ", index_html)
