@@ -14,7 +14,6 @@ rmd_files:
   - 03-replicate-weights.Rmd
   - 04-plausible-values.Rmd
   - 05-download-data.Rmd
-  - 06-resources.Rmd
   - 07-stata.Rmd
   - 08-r.Rmd
   - 09-references.Rmd
