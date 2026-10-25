@@ -1,4 +1,4 @@
-# Analyzing PASEC 2019 data in R {#c07-r}
+# Analysing PASEC 2019 data in R {#c07-r}
 
 This section provides a practical introduction to analysing PASEC 2019 data in R. It is intended for users with a basic working knowledge of R and includes step-by-step examples covering common PASEC analyses.
 
@@ -34,7 +34,7 @@ For hands-on examples we’ll start with the Grade 2 study.
 
 ```{r message=FALSE, warning=FALSE}
 # Paths below are relative to the project root
-g2 = read_dta("data/PASEC2019_GRADE2_INT.dta")
+g2 = read_dta("scripts/2019/PASEC2019_GRADE2_INT.dta")
 ```
 
 It is good practice to run your analysis from an R script rather than the console, as this makes your work reproducible. All examples in this section are written as script code.
@@ -45,7 +45,7 @@ To encourage and assist non-French speaking users to analyse the rich PASEC data
 
 ```{r}
 # Apply English labels
-source("data/PASEC2019_Grade2_EN_labels.R")
+source("scripts/2019/PASEC2019_Grade2_EN_labels.R")
 g2 = apply_pasec_grade2_en_labels(g2)
 ```
 
@@ -433,10 +433,10 @@ Now let’s use the Grade 6 data. There are $90$ replicate weights so we will us
 
 ```{r message=FALSE, warning=FALSE}
 # Load Grade 6 data
-g6 = read_dta("data/PASEC2019_Grade6_INT.dta")
+g6 = read_dta("scripts/2019/PASEC2019_Grade6_INT.dta")
 
 # Apply English labels
-source("data/PASEC2019_Grade6_EN_labels.R")
+source("scripts/2019/PASEC2019_Grade6_EN_labels.R")
 g6 = apply_pasec_grade6_en_labels(g6)
 
 # Generate indicator variable for girl (Grade 6 uses qe63 for gender)
