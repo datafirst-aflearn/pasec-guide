@@ -14,7 +14,7 @@
 
 <title>PASEC Analysis Guide</title>
 
-<script src="nav-guide_files/header-attrs-2.29/header-attrs.js"></script>
+<script src="nav-guide_files/header-attrs-2.31/header-attrs.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -48,7 +48,7 @@
 
 
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
@@ -68,13 +68,18 @@
   --af-card-muted: rgba(13, 13, 82, 0.68);
   --af-card-soft: rgba(13, 13, 82, 0.48);
   --af-card-hairline: rgba(13, 13, 82, 0.10);
+  --af-caption: #6f7d99;
+  --af-font-title: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --af-font-body: "Barlow", ui-sans-serif, system-ui, sans-serif;
 }
 
 html, body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--af-font-body);
+  font-size: 16px;
+  font-weight: 400;
   background-color: var(--af-navy) !important;
   color: var(--af-on);
 }
@@ -125,6 +130,7 @@ h1.title,
   gap: 10px;
   text-decoration: none;
   color: var(--af-on);
+  font-family: var(--af-font-body);
   font-weight: 600;
   font-size: 17px;
 }
@@ -158,7 +164,7 @@ h1.title,
   background: #FFFFFF;
   color: var(--af-on);
   font-family: inherit;
-  font-size: 15px;
+  font-size: 16px;
   outline: none;
 }
 
@@ -175,7 +181,9 @@ h1.title,
   right: 10px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 12px;
+  font-family: var(--af-font-body);
+  font-size: 15px;
+  font-weight: 600;
   color: var(--af-soft);
   pointer-events: none;
 }
@@ -218,32 +226,33 @@ h1.title,
 }
 
 .af-search-hit-title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
 }
 
 .af-search-hit-meta {
-  font-size: 12px;
-  color: var(--af-card-soft);
+  font-size: 15px;
+  color: var(--af-caption);
   margin-top: 2px;
 }
 
 .af-search-empty {
   padding: 12px;
-  font-size: 13px;
-  color: var(--af-card-soft);
+  font-size: 15px;
+  color: var(--af-caption);
 }
 
 .af-nav-link {
   color: var(--af-bright);
-  font-weight: 500;
+  font-family: var(--af-font-body);
+  font-weight: 400;
   font-size: 16px;
   text-decoration: none;
 }
 
 .af-nav-link-muted {
   color: var(--af-muted);
-  font-size: 15px;
+  font-size: 16px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -281,7 +290,8 @@ h1.title,
 
 .af-hero-title {
   margin: 0;
-  font-size: clamp(26px, 3.2vw, 36px);
+  font-family: var(--af-font-title);
+  font-size: clamp(28px, 3.2vw, 36px);
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -290,15 +300,17 @@ h1.title,
 
 .af-hero-sub {
   margin: 10px 0 0;
-  font-size: clamp(15px, 1.8vw, 20px);
-  font-weight: 600;
+  font-family: var(--af-font-body);
+  font-size: 17px;
+  font-weight: 400;
   line-height: 1.35;
-  color: var(--af-on);
+  color: var(--af-caption);
 }
 
 .af-hero-tag {
   margin: 6px 0 0;
-  font-size: 14px;
+  font-family: var(--af-font-body);
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.01em;
   color: var(--af-tagline);
@@ -373,7 +385,8 @@ h1.title,
 
 .af-card-title {
   margin: 0;
-  font-size: 17px;
+  font-family: var(--af-font-title);
+  font-size: 25px;
   font-weight: 700;
   color: var(--af-card-on);
 }
@@ -385,8 +398,9 @@ h1.title,
   padding: 4px 12px;
   border: none;
   background: var(--af-chip);
-  font-size: 11px;
-  font-weight: 700;
+  font-family: var(--af-font-body);
+  font-size: 15px;
+  font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--af-on);
@@ -394,7 +408,9 @@ h1.title,
 
 .af-card-details {
   margin: 0;
-  font-size: 14px;
+  font-family: var(--af-font-body);
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.5;
   color: var(--af-card-muted);
 }
@@ -435,7 +451,7 @@ h1.title,
   <section class="af-hero">
     <div>
       <h1 class="af-hero-title">PASEC Analysis Guide</h1>
-      <p class="af-hero-sub">Analysing PASEC 2019 Data in Stata and R</p>
+      <p class="af-hero-sub">Analysing PASEC 2019 & 2024 Microdata in Stata and R</p>
     </div>
     <div class="af-hero-logo">
       <img src="files/AFLEARN-datahub-lockup.png" alt="AFLEARN DATAHUB" width="280" height="191">
@@ -447,14 +463,14 @@ h1.title,
 
       <a class="af-card" href="ch04-download.html" data-category="guide">
         <img class="af-card-icon" src="files/icons/ahead-bars.svg" alt="" width="40" height="40">
-        <h3 class="af-card-title">Download the PASEC Data</h3>
+        <h3 class="af-card-title">Download the PASEC Microdata</h3>
         <span class="af-card-chip">Guide</span>
         <p class="af-card-details">Access datasets, documentation, and supporting resources.</p>
       </a>
 
       <a class="af-card" href="ch-whats-in-data.html" data-category="guide">
         <img class="af-card-icon" src="files/icons/ahead-book.svg" alt="" width="40" height="40">
-        <h3 class="af-card-title">Understanding PASEC Data</h3>
+        <h3 class="af-card-title">Understanding PASEC Microdata</h3>
         <span class="af-card-chip">Guide</span>
         <p class="af-card-details">Learn about the assessment design, sample, and dataset structure.</p>
       </a>
@@ -496,14 +512,14 @@ h1.title,
 (function () {
   var destinations = [
     {
-      title: "Download the PASEC Data",
+      title: "Download the PASEC Microdata",
       details: "Access datasets, documentation, and supporting resources.",
       href: "ch04-download.html",
       category: "Guide",
       keywords: "download data datasets documentation resources"
     },
     {
-      title: "Understanding PASEC Data",
+      title: "Understanding PASEC Microdata",
       details: "Learn about the assessment design, sample, and dataset structure.",
       href: "ch-whats-in-data.html",
       category: "Guide",
