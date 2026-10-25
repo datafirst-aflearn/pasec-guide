@@ -1,4 +1,4 @@
-# Analyzing PASEC 2019 data in Stata {#c06-stata}
+# Analysing PASEC 2019 data in Stata {#c06-stata}
 
 This section provides a practical introduction to analysing PASEC 2019 data in Stata using the `repest` package. It is intended for users with a basic working knowledge of Stata and includes step-by-step examples covering common PASEC analyses.
 
@@ -40,12 +40,12 @@ It is good practice to run your analysis from a do-file rather than the command 
 
 ## Applying English labels
 
-To encourage and assist non-French speaking users to analyse the rich PASEC data, we have supplied do files that apply English variable and value labels. These files are in the `data/` folder of this project.
+The original PASEC datasets are provided in French. To encourage wider use of the rich PASEC data, AFLEARN provides *.do* files that translates French variable and value labels to English to both the Grade 2 and Grade 6 datasets. You can directly download them from the [AFLEARN's repository](https://github.com/datafirst-aflearn/pasec-guide/tree/main/data)
 
 ```{stata apply-labels-grade2, collectcode=TRUE}
 * Apply English labels
 
-do "data/PASEC2019_Grade2_EN_labels.do"
+do "scripts/PASEC2019_Grade2_EN_labels.do"
 
 * Show both numeric values and value labels 
 
@@ -78,9 +78,9 @@ The basic syntax of the repest command is as follows:
 repest svyname [if] [in] , estimate(cmd [,cmd_options]) [options]
 ```
 
--   `svyname`: Either one of the study names supported by the package (e,g., PISA, TIMSS, PIRLS) or SVY which allows you to specify the survey design.
+- `svyname`: Either one of the study names supported by the package (e,g., PISA, TIMSS, PIRLS) or SVY which allows you to specify the survey design.
 
--   `estimate(cmd [,cmd_options)`: Specifies the statistical command to run. `cmd` can be any Stata command that accepts weights — for example, `mean`, `reg`, `qreg`, or the built-in repest commands `means`, `freq`, `summarize`, `corr` and `quantiletable`. Command-specific options are passed after a comma within the parentheses.
+- `estimate(cmd [,cmd_options)`: Specifies the statistical command to run. `cmd` can be any Stata command that accepts weights — for example, `mean`, `reg`, `qreg`, or the built-in repest commands `means`, `freq`, `summarize`, `corr` and `quantiletable`. Command-specific options are passed after a comma within the parentheses.
 
 ## Before you begin: Set up `repest` for PASEC
 
@@ -110,7 +110,7 @@ For Grade 6, we need to specify that there are 90 replicate weights. Commands fo
 repest SVY [if] [in] , estimate(cmd [,cmd_options]) [options] svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(90) variancefactor(1)) 
 ```
 
-## PASEC Analyses Examples
+## PASEC 2019 Analyses Examples
 
 ### Calculating Mean Age
 
@@ -141,15 +141,15 @@ The estimated mean age of Grade 2 students in Benin is $7.57$ years ($95\%$ CI: 
 :::
 
 ::: {.alternativebox data-latex="{Alternative to generate the same result - svy}"}
-PASEC provides replicate weights specifically so that users can reproduce the official variance estimation procedure.
+PASEC 2019 provides replicate weights specifically so that users can reproduce the official variance estimation procedure.
 
 If the public data contain:
 
--   the final sampling weight,
+- the final sampling weight,
 
--   the sampling strata,
+- the sampling strata,
 
--   the primary sampling units (PSUs),
+- the primary sampling units (PSUs),
 
 and these accurately reflect the actual design, then
 
@@ -270,7 +270,7 @@ The quantile table divides the mathematics and reading distributions into five e
 
 Other built-in `repest` commands are `means`, `freq` and `corr`.
 
-### Estimating PASEC proficiency levels
+### Estimating PASEC 2019 proficiency levels
 
 PASEC defines a set of proficiency levels that describe what students know and can do at different points along the mathematics scale. In this example, we estimate the proportion of Grade 2 students in Benin who fall into each of the four PASEC mathematics proficiency levels.
 
@@ -307,9 +307,9 @@ The results indicate that approximately $11\%$ of Grade 2 students in Benin fall
 
 ### Testing for differences between groups
 
-The table below highlights the distinction between two common types of comparisons in PASEC data: within-country comparisons (e.g., boys versus girls in the same country) and between-country comparisons (e.g., Benin versus Burkina Faso). Because these comparisons involve different survey structures, they require slightly different analytical approaches. 
+The table below highlights the distinction between two common types of comparisons in PASEC data: within-country comparisons (e.g., boys versus girls in the same country) and between-country comparisons (e.g., Benin versus Burkina Faso). Because these comparisons involve different survey structures, they require slightly different analytical approaches.
 
-The examples that follow demonstrate how to test for differences in achievement between groups using regression models in repest. 
+The examples that follow demonstrate how to test for differences in achievement between groups using regression models in repest.
 
 | Comparison Type | What it measures | Survey design impact |
 |------------------------|------------------------|------------------------|
@@ -329,7 +329,7 @@ repest SVY if ID_PAYS==1, estimate(reg MATHS_PV@ girl) svyparm(NBpv(5) final_wei
 
 ```
 
-The coefficient on girl provides the estimated difference in mathematics proficiency between girls and boys, together with the appropriate standard error and significance test. On average, girls’ scores are $22.7$ points lower than boys in Benin. 
+The coefficient on girl provides the estimated difference in mathematics proficiency between girls and boys, together with the appropriate standard error and significance test. On average, girls’ scores are $22.7$ points lower than boys in Benin.
 
 What about differences in the proportion reaching PASEC level $4$?
 
@@ -355,20 +355,19 @@ Mathematics proficiency levels are $26.4$ points lower in Burkina Faso compared 
 
 #### Testing for differences in percentiles
 
-You cannot use standard linear regression (`regress`) because it only models the conditional arithmetic mean. Instead, to test differences in percentiles, you must use quantile regression (`qreg`) . 
+You cannot use standard linear regression (`regress`) because it only models the conditional arithmetic mean. Instead, to test differences in percentiles, you must use quantile regression (`qreg`) .
 
-Quantile regression works exactly like linear regression, but instead of drawing a line through the average of the data, it draws a line through a specific percentile (quantile) of the data. 
+Quantile regression works exactly like linear regression, but instead of drawing a line through the average of the data, it draws a line through a specific percentile (quantile) of the data.
 
-- `qreg, quantile(0.50)` models the Median ($50th$ Percentile). 
+- `qreg, quantile(0.50)` models the Median ($50th$ Percentile).
 
-- `qreg, quantile(0.25)` models the $25th$ Percentile (Lower Bound). 
+- `qreg, quantile(0.25)` models the $25th$ Percentile (Lower Bound).
 
-- `qreg, quantile(0.75)` models the $75th$ Percentile (Upper Bound).  
+- `qreg, quantile(0.75)` models the $75th$ Percentile (Upper Bound).
 
+Just like `regress`, `qreg` returns standard coefficients ($\beta$) and standard error matrices ($e(b)$).
 
-Just like `regress`, `qreg` returns standard coefficients ($\beta$) and standard error matrices ($e(b)$).  
-
-If we want to test for differences in percentiles, we can use quantile regression 
+If we want to test for differences in percentiles, we can use quantile regression
 
 ```{stata, collectcode=TRUE}
 *Test for differences at the 25th and 75th percentile between boys and girls in Benin 
@@ -380,19 +379,19 @@ repest SVY if ID_PAYS==1, estimate(qreg MATHS_PV@ girl, quantile(0.25)) svyparm(
 repest SVY if ID_PAYS==1, estimate(qreg MATHS_PV@ girl, quantile(0.75)) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(45) variancefactor(1))  
 ```
 
-The gap between boys and girls increases from $19.3$ points at the $25th$ percentile to $22.3$ points at the $75th$ percentile. 
+The gap between boys and girls increases from $19.3$ points at the $25th$ percentile to $22.3$ points at the $75th$ percentile.
 
-### Multivariate Regression 
+### Multivariate Regression
 
-Now let’s use the Grade $6$ data. There are $90$ replicate weights so we will need to replace `NREP(45)` with `NREP(90)` in the `svyparm()` suboptions. 
+Now let’s use the Grade $6$ data. There are $90$ replicate weights so we will need to replace `NREP(45)` with `NREP(90)` in the `svyparm()` suboptions.
 
-Grade 6 setup 
+Grade 6 setup
 
 ```{stata, eval=FALSE, include=TRUE}
 repest SVY [if] [in] , estimate(cmd [,cmd_options]) [options] svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(90) variancefactor(1)) 
 ```
 
-In this example, we’ll analyze the association between students’ math scores (*MATHS_PV@*) and their gender (*qe63*) and socio-economic status (*ses*) in Cote D’Ivoire. The ses variable is a composite socioeconomic status index derived from the PASEC household questionnaire. 
+In this example, we’ll analyze the association between students’ math scores (*MATHS_PV\@*) and their gender (*qe63*) and socio-economic status (*ses*) in Cote D’Ivoire. The ses variable is a composite socioeconomic status index derived from the PASEC household questionnaire.
 
 ```{stata load-grade6, collectcode=TRUE}
 * Load Grade 6 data
@@ -420,60 +419,16 @@ gen girl=qe63==2 if qe63<9
 repest SVY if ID_PAYS==6, estimate(reg MATHS_PV@ ses girl) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(90) variancefactor(1)) results(add(r2 N)) 
 ```
 
-The `results(add(r2 N))` option: This option allows you to add extra statistics to the results table, which Stata stores by default. Here, we add R-squared (`e_r2`) - a measure of model fit, and number of observations (`e_N`). Note that `repest` stores these additional statistics internally as `e_r2` and `e_N`, and these are the names shown in the output table. 
+The `results(add(r2 N))` option: This option allows you to add extra statistics to the results table, which Stata stores by default. Here, we add R-squared (`e_r2`) - a measure of model fit, and number of observations (`e_N`). Note that `repest` stores these additional statistics internally as `e_r2` and `e_N`, and these are the names shown in the output table.
 
-The regression estimates the association between mathematics proficiency, socioeconomic status (SES), and gender among Grade $6$ students in Côte d'Ivoire while correctly accounting for both plausible values and the PASEC replicate-weight design. 
+The regression estimates the association between mathematics proficiency, socioeconomic status (SES), and gender among Grade $6$ students in Côte d'Ivoire while correctly accounting for both plausible values and the PASEC replicate-weight design.
 
-The results indicate a strong positive association between socioeconomic status and mathematics achievement. A one-unit increase in the SES index is associated with an increase of approximately $2.17$ points in mathematics proficiency (coefficient $= 2.17$, $p < 0.001$). This relationship is statistically significant, suggesting that students from more advantaged socioeconomic backgrounds tend to perform better in mathematics. 
+The results indicate a strong positive association between socioeconomic status and mathematics achievement. A one-unit increase in the SES index is associated with an increase of approximately $2.17$ points in mathematics proficiency (coefficient $= 2.17$, $p < 0.001$). This relationship is statistically significant, suggesting that students from more advantaged socioeconomic backgrounds tend to perform better in mathematics.
 
-The coefficient on the female indicator (girl) is $-11.62$ ($p < 0.001$), indicating that girls score, on average, about 12 points lower than boys with similar socioeconomic status. Because SES is included in the model, this estimated gender gap reflects differences between boys and girls after accounting for socioeconomic background. 
+The coefficient on the female indicator (girl) is $-11.62$ ($p < 0.001$), indicating that girls score, on average, about 12 points lower than boys with similar socioeconomic status. Because SES is included in the model, this estimated gender gap reflects differences between boys and girls after accounting for socioeconomic background.
 
-The constant term ($349$) represents the predicted mathematics score for a boy with an SES value of zero. While the intercept is necessary for estimation, it is typically of limited substantive interest because an SES value of zero may not correspond to a meaningful student profile. 
+The constant term ($349$) represents the predicted mathematics score for a boy with an SES value of zero. While the intercept is necessary for estimation, it is typically of limited substantive interest because an SES value of zero may not correspond to a meaningful student profile.
 
-Overall, the results suggest that both socioeconomic status and gender are important correlates of mathematics achievement in Côte d'Ivoire. Higher socioeconomic status is associated with better performance, while girls perform less well than boys on average, even after controlling for socioeconomic differences. 
+Overall, the results suggest that both socioeconomic status and gender are important correlates of mathematics achievement in Côte d'Ivoire. Higher socioeconomic status is associated with better performance, while girls perform less well than boys on average, even after controlling for socioeconomic differences.
 
-It is important to remember that these coefficients describe associations rather than causal effects. The regression does not imply that increasing a student's socioeconomic status by one unit would necessarily increase their mathematics score by $2.17$ points. Other factors associated with socioeconomic status, such as school quality, parental education, household resources, and learning opportunities, may also contribute to the observed relationship. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+It is important to remember that these coefficients describe associations rather than causal effects. The regression does not imply that increasing a student's socioeconomic status by one unit would necessarily increase their mathematics score by $2.17$ points. Other factors associated with socioeconomic status, such as school quality, parental education, household resources, and learning opportunities, may also contribute to the observed relationship.

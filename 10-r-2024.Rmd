@@ -441,7 +441,7 @@ g6 = read_dta("scripts/2024/PASEC2024_GRADE6.dta")
 source("scripts/2024/pasec2024-grd6-labels-en.R")
 g6 = apply_english_labels_grd6(g6)
 
-# Generate indicator variable for girl (Grade 6 uses qe63 for gender)
+# Generate indicator variable for girl 
 g6$girl = ifelse(g6$qe6a_03 < 9, as.integer(g6$qe6a_03 == 2), NA)
 
 # Association between mathematics scores and socio-economic status and gender
