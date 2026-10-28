@@ -2,20 +2,23 @@ book_filename: "bookdownproj"
 output_dir: docs
 delete_merged_file: true
 knit_root_dir: "."
-edit: https://github.com/DataFirst-Courses/pasec-guide/edit/main/%s
-view: https://github.com/DataFirst-Courses/pasec-guide/blob/main/%s
+edit: https://github.com/datafirst-aflearn/pasec-guide/edit/main/%s
+view: https://github.com/datafirst-aflearn/pasec-guide/blob/main/%s
 language:
   ui:
     chapter_name: " "
 rmd_files:
   - index.Rmd
   - 01-intro.Rmd
-  - 02-whats-in-the-data.Rmd
-  - 03-replicate-weights.Rmd
-  - 04-plausible-values.Rmd
-  - 05-download-data.Rmd
-  - 07-stata.Rmd
-  - 08-r.Rmd
-  - 09-references.Rmd
+  - 02-whats-in-the-2019-data.Rmd
+  - 03-whats-in-the-2024-data.Rmd
+  - 04-replicate-weights.Rmd
+  - 05-plausible-values.Rmd
+  - 06-download-data.Rmd
+  - 07-stata-2019.Rmd
+  - 08-stata-2024.Rmd
+  - 09-r-2019.Rmd
+  - 10-r-2024.Rmd
+  #- 09-references.Rmd
 after_render: ["R/publish-nav.R"]
 
