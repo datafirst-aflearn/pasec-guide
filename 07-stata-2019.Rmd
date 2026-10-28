@@ -33,7 +33,7 @@ For hands-on examples we’ll start with the Grade 2 study.
 * Set the path to your working folder if needed.
 * Paths below are relative to the project root.
 
-use "data/PASEC2019_GRADE2_INT.dta", clear
+use "scripts/2019/PASEC2019_GRADE2_INT.dta", clear
 ```
 
 It is good practice to run your analysis from a do-file rather than the command window, as this makes your work reproducible. All examples in this guide are written as do-file code available here.
@@ -45,7 +45,7 @@ The original PASEC datasets are provided in French. To encourage wider use of th
 ```{stata apply-labels-grade2, collectcode=TRUE}
 * Apply English labels
 
-do "scripts/PASEC2019_Grade2_EN_labels.do"
+do "scripts/2019/PASEC2019_Grade2_EN_labels.do"
 
 * Show both numeric values and value labels 
 
@@ -395,12 +395,12 @@ In this example, we’ll analyze the association between students’ math scores
 
 ```{stata load-grade6, collectcode=TRUE}
 * Load Grade 6 data
-use "data/PASEC2019_GRADE6_INT.dta", clear
+use "scripts/2019/PASEC2019_GRADE6_INT.dta", clear
 ```
 
 ```{stata apply-labels-grade6, collectcode=TRUE}
 * Apply English labels
-do "data/PASEC2019_Grade6_EN_labels.do"
+do "scripts/2019/PASEC2019_Grade6_EN_labels.do"
 
 * Show both numeric values and value labels
 numlabel, add
