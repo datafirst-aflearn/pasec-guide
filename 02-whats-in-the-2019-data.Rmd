@@ -1,4 +1,4 @@
-# What's in the data? {#ch-whats-in-data}
+# What's in the PASEC 2019 data? {#ch-whats-in-data}
 
 ```{css, echo=FALSE}
 .pasec-table-wrap {
@@ -95,7 +95,7 @@ The PASEC 2019 Grade 2 student assessment was designed to measure foundational l
 </div>
 ```
 
-### Areas assessed by PASEC2019 in Reading – Early primary
+### Areas assessed in Grade 2 reading
 
 ```{=html}
 <div class="pasec-table-wrap">
@@ -122,7 +122,7 @@ The PASEC 2019 Grade 2 student assessment was designed to measure foundational l
 
 *Source: PASEC 2019 QUALITY OF EDUCATION SYSTEMS IN FRENCH-SPEAKING SUB-SAHARAN AFRICA Table 1.2 pp 28.*
 
-### Areas assessed by PASEC2019 in mathematics – Early primary
+### Areas assessed in Grade 2 mathematics 
 
 ```{=html}
 <div class="pasec-table-wrap">
@@ -168,7 +168,7 @@ Unlike the Grade 2 assessment, the Grade 6 assessment was administered as a grou
 </div>
 ```
 
-### Areas assessed by PASEC2019 in reading – Late primary
+### Areas assessed in Grade 6 in reading
 
 ```{=html}
 <div class="pasec-table-wrap">
@@ -191,7 +191,7 @@ Unlike the Grade 2 assessment, the Grade 6 assessment was administered as a grou
 
 *Source: PASEC 2019 QUALITY OF EDUCATION SYSTEMS IN FRENCH-SPEAKING SUB-SAHARAN AFRICA Table 1.4 pp 30.*
 
-### Areas assessed by PASEC2019 in mathematics – Late primary
+### Areas assessed in Grade 6 mathematics
 
 ```{=html}
 <div class="pasec-table-wrap">
@@ -217,9 +217,9 @@ Unlike the Grade 2 assessment, the Grade 6 assessment was administered as a grou
 
 *Source: PASEC 2019 QUALITY OF EDUCATION SYSTEMS IN FRENCH-SPEAKING SUB-SAHARAN AFRICA Table 1.5 pp 30.*
 
-## Student Reading and Mathematics Proficiency Scores
+## Proficiency Scales
 
-PASEC uses Item Response Theory (IRT) to estimate student proficiency in reading and mathematics from responses to the assessment items together with background information. These estimates are provided as five plausible values for reading (**LECT_PV1 – LECT_PV5**) and five plausible values for mathematics (**MATHS_PV1 – MATHS_PV5**). [Learn more about plausible values and how to use them in your analysis](c03-plausible-values.html).
+PASEC uses Item Response Theory (IRT) to estimate student proficiency in reading and mathematics from responses to the assessment items together with background information. These estimates are provided as five plausible values for reading (**LECT_PV1 – LECT_PV5**) and five plausible values for mathematics (**MATHS_PV1 – MATHS_PV5**). Learn more about [plausible values](c03-plausible-values.html) and how to use them in your analysis
 
 The PASEC 2019 proficiency scores are reported on the same scale as PASEC 2014, which was standardised to have an international mean of 500 and a standard deviation of 100, with each participating country contributing equally to the scaling. The use of common assessment items allows results from 2019 to be compared directly with those from 2014.
 
@@ -229,7 +229,7 @@ PASEC defines a **minimum proficiency level** representing the knowledge and ski
 
 For reporting on Sustainable Development Goal (SDG) indicator 4.1.1, the PASEC minimum proficiency level aligns with the SDG minimum proficiency level for Grade 2 (SDG 4.1.1a). In Grade 6, however, the SDG 4.1.1b minimum proficiency level is set one level higher than the PASEC minimum proficiency level.
 
-### Reading proficiency scale – Early primary (Grade 2)
+### Grade 2 reading proficiency scale
 
 ```{=html}
 <div class="pasec-table-wrap">
@@ -254,13 +254,14 @@ For reporting on Sustainable Development Goal (SDG) indicator 4.1.1, the PASEC m
   </tr>
   <tr>
     <td style="background-color: #45B0E1; color: #FFFFFF">Level 2</td>
-    <td>Between 540 and 610 points</td>
-    <td>Learner reader: moving towards the perfecting of decoding skills, listening skills and understanding of written words Students at this level have perfected their listening comprehension and decoding skills, enabling them to focus on understanding words. In listening comprehension, they are able to understand explicit information in a short text which uses familiar vocabulary. They are gradually developing links between spoken and written language and thus improving their decoding skills and expanding their vocabulary. In reading comprehension, students are able to identify the meaning of isolated words.</td>
+    <td>Between 469 and 540 points</td>
+    <td>Emerging reader: moving towards developing decoding skills and strengthening listening comprehension skills. The students have improved their level of listening comprehension and are able to identify a lexical field. They are developing the first rudimentary links between oral language and written language, and are able to perform basic tasks of decoding, recognition and graphophonological identification (letters, syllables, graphemes, phonemes).</td>
   </tr>
   <tr>
     <td style="background-color: #83CAEB; color: #FFFFFF">Level 1</td>
     <td>Between 399 and 469 points</td>
-    <td>Emergent reader: towards developing decoding skills and strengthening listening comprehension skills Students are able to understand very short-spoken messages that use isolated words and refer to familiar objects. They have great difficulty with decoding the written word and with graphophonological identification (letters, syllables, graphemes and phonemes).</td>
+    <td>Awakening reader: Students are able to understand very short (isolated words) and familiar oral messages to recognise familiar objects. They have great difficulty in decoding written words and graphophonological identification (letters, syllables,
+graphemes and phonemes).</td>
   </tr>
   <tr>
     <td style="background-color: #C1E4F5; color: #FFFFFF">Below Level 1</td>
@@ -273,7 +274,7 @@ For reporting on Sustainable Development Goal (SDG) indicator 4.1.1, the PASEC m
 
 *Source: PASEC 2019 QUALITY OF EDUCATION SYSTEMS IN FRENCH-SPEAKING SUB-SAHARAN AFRICA Table 2.1 pp 47.*
 
-### Mathematics proficiency scale – Early primary (Grade 2)
+### Grade 2 mathematics proficiency scale
 
 ```{=html}
 <div class="pasec-table-wrap">
@@ -312,7 +313,7 @@ For reporting on Sustainable Development Goal (SDG) indicator 4.1.1, the PASEC m
 
 *Source: PASEC 2019 QUALITY OF EDUCATION SYSTEMS IN FRENCH-SPEAKING SUB-SAHARAN AFRICA Table 2.2 pp 53.*
 
-### Reading proficiency scale – late primary (Grade 6)
+###  Grade 6 reading proficiency scale
 
 ```{=html}
 <div class="pasec-table-wrap">
@@ -359,7 +360,7 @@ For reporting on Sustainable Development Goal (SDG) indicator 4.1.1, the PASEC m
 
 *Source: PASEC 2019 QUALITY OF EDUCATION SYSTEMS IN FRENCH-SPEAKING SUB-SAHARAN AFRICA Table 2.6 pp 70.*
 
-### Mathematics proficiency scale – Late primary (Grade 6)
+### Grade 6 mathematics proficiency scale
 
 ```{=html}
 <div class="pasec-table-wrap">

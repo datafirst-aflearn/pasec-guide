@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 8 Analysing PASEC 2024 data in Stata | bookdownproj.knit</title>
+  <meta name="description" content="" />
+  <meta name="generator" content="bookdown 0.48 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 8 Analysing PASEC 2024 data in Stata | bookdownproj.knit" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 8 Analysing PASEC 2024 data in Stata | bookdownproj.knit" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="c06-stata.html"/>
+<link rel="next" href="c07-r.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="toc-logo"><a href="index.html"><img src="files/AFLEARN logo.png" alt="AFLEARN"></a></li>
+<li class="home-link"><a href="index.html"><i class="fa fa-home"></i> Guide home</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="ch01-intro.html"><a href="ch01-intro.html"><i class="fa fa-check"></i><b>1</b> Introduction to the Guide</a></li>
+<li class="chapter" data-level="2" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html"><i class="fa fa-check"></i><b>2</b> What’s in the PASEC 2019 data?</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#grade-2-student-assessment"><i class="fa fa-check"></i><b>2.1</b> Grade 2 student assessment</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#areas-assessed-in-grade-2-reading"><i class="fa fa-check"></i><b>2.1.1</b> Areas assessed in Grade 2 reading</a></li>
+<li class="chapter" data-level="2.1.2" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#areas-assessed-in-grade-2-mathematics"><i class="fa fa-check"></i><b>2.1.2</b> Areas assessed in Grade 2 mathematics</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#grade-6-student-assessment"><i class="fa fa-check"></i><b>2.2</b> Grade 6 student assessment</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#areas-assessed-in-grade-6-in-reading"><i class="fa fa-check"></i><b>2.2.1</b> Areas assessed in Grade 6 in reading</a></li>
+<li class="chapter" data-level="2.2.2" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#areas-assessed-in-grade-6-mathematics"><i class="fa fa-check"></i><b>2.2.2</b> Areas assessed in Grade 6 mathematics</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#proficiency-scales"><i class="fa fa-check"></i><b>2.3</b> Proficiency Scales</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#grade-2-reading-proficiency-scale"><i class="fa fa-check"></i><b>2.3.1</b> Grade 2 reading proficiency scale</a></li>
+<li class="chapter" data-level="2.3.2" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#grade-2-mathematics-proficiency-scale"><i class="fa fa-check"></i><b>2.3.2</b> Grade 2 mathematics proficiency scale</a></li>
+<li class="chapter" data-level="2.3.3" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#grade-6-reading-proficiency-scale"><i class="fa fa-check"></i><b>2.3.3</b> Grade 6 reading proficiency scale</a></li>
+<li class="chapter" data-level="2.3.4" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#grade-6-mathematics-proficiency-scale"><i class="fa fa-check"></i><b>2.3.4</b> Grade 6 mathematics proficiency scale</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#grade-2-student-contextual-questionnaire"><i class="fa fa-check"></i><b>2.4</b> Grade 2 student contextual questionnaire</a></li>
+<li class="chapter" data-level="2.5" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#grade-6-student-contextual-questionnaire"><i class="fa fa-check"></i><b>2.5</b> Grade 6 student contextual questionnaire</a></li>
+<li class="chapter" data-level="2.6" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#teacher-questionnaire"><i class="fa fa-check"></i><b>2.6</b> Teacher questionnaire</a></li>
+<li class="chapter" data-level="2.7" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#principal-questionnaire"><i class="fa fa-check"></i><b>2.7</b> Principal questionnaire</a></li>
+<li class="chapter" data-level="2.8" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#derived-variables"><i class="fa fa-check"></i><b>2.8</b> Derived variables</a></li>
+<li class="chapter" data-level="2.9" data-path="ch-whats-in-data.html"><a href="ch-whats-in-data.html#administrative-variables"><i class="fa fa-check"></i><b>2.9</b> Administrative variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html"><i class="fa fa-check"></i><b>3</b> What’s in the PASEC 2024 data?</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#grade-2-student-assessment-1"><i class="fa fa-check"></i><b>3.1</b> Grade 2 student assessment</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#areas-assessed-by-pasec-2024-in-reading"><i class="fa fa-check"></i><b>3.1.1</b> Areas assessed by PASEC 2024 in Reading</a></li>
+<li class="chapter" data-level="3.1.2" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#areas-assessed-by-pasec-2024-in-mathematics"><i class="fa fa-check"></i><b>3.1.2</b> Areas assessed by PASEC 2024 in mathematics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#grade-6-student-assessment-1"><i class="fa fa-check"></i><b>3.2</b> Grade 6 student assessment</a></li>
+<li class="chapter" data-level="3.3" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#grade-10-student-assessment"><i class="fa fa-check"></i><b>3.3</b> Grade 10 student assessment</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#areas-assessed-by-pasec-2024-in-reading-1"><i class="fa fa-check"></i><b>3.3.1</b> Areas assessed by PASEC 2024 in reading</a></li>
+<li class="chapter" data-level="3.3.2" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#areas-assessed-by-pasec-2024-in-mathematics-1"><i class="fa fa-check"></i><b>3.3.2</b> Areas assessed by PASEC 2024 in mathematics</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#proficiency-scales-1"><i class="fa fa-check"></i><b>3.4</b> Proficiency Scales</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#grade-6-reading-proficiency-scale-1"><i class="fa fa-check"></i><b>3.4.1</b> Grade 6 reading proficiency scale</a></li>
+<li class="chapter" data-level="3.4.2" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#grade-6-mathematics-proficiency-scale-1"><i class="fa fa-check"></i><b>3.4.2</b> Grade 6 mathematics proficiency scale</a></li>
+<li class="chapter" data-level="3.4.3" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#grade-10-reading-proficiency-scale"><i class="fa fa-check"></i><b>3.4.3</b> Grade 10 reading proficiency scale</a></li>
+<li class="chapter" data-level="3.4.4" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#grade-10-mathematics-proficiency-scale"><i class="fa fa-check"></i><b>3.4.4</b> Grade 10 mathematics proficiency scale</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#grade-2-student-contextual-questionnaire-1"><i class="fa fa-check"></i><b>3.5</b> Grade 2 student contextual questionnaire</a></li>
+<li class="chapter" data-level="3.6" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#grade-6-student-contextual-questionnaire-1"><i class="fa fa-check"></i><b>3.6</b> Grade 6 student contextual questionnaire</a></li>
+<li class="chapter" data-level="3.7" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#grade-10-student-contextual-questionnaire"><i class="fa fa-check"></i><b>3.7</b> Grade 10 student contextual questionnaire</a></li>
+<li class="chapter" data-level="3.8" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#teacher-questionnaire-1"><i class="fa fa-check"></i><b>3.8</b> Teacher questionnaire</a></li>
+<li class="chapter" data-level="3.9" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#principal-questionnaire-1"><i class="fa fa-check"></i><b>3.9</b> Principal questionnaire</a></li>
+<li class="chapter" data-level="3.10" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#parent-questionnaire"><i class="fa fa-check"></i><b>3.10</b> Parent questionnaire</a></li>
+<li class="chapter" data-level="3.11" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#derived-variables-1"><i class="fa fa-check"></i><b>3.11</b> Derived variables</a></li>
+<li class="chapter" data-level="3.12" data-path="ch-whats-in-2024-data.html"><a href="ch-whats-in-2024-data.html#administrative-variables-1"><i class="fa fa-check"></i><b>3.12</b> Administrative variables</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="c02-replicate-weights.html"><a href="c02-replicate-weights.html"><i class="fa fa-check"></i><b>4</b> What are replicate weights</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="c02-replicate-weights.html"><a href="c02-replicate-weights.html#worked-example-mean-age-in-grade-2-benin-pasec-2019"><i class="fa fa-check"></i><b>4.1</b> Worked example: mean age in Grade 2, Benin, PASEC 2019</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="c03-plausible-values.html"><a href="c03-plausible-values.html"><i class="fa fa-check"></i><b>5</b> What are plausible values?</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="c03-plausible-values.html"><a href="c03-plausible-values.html#worked-example-mean-language-proficiency-in-pasec-2019-grade-2"><i class="fa fa-check"></i><b>5.1</b> Worked example: mean language proficiency in PASEC 2019 Grade 2</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="ch04-download.html"><a href="ch04-download.html"><i class="fa fa-check"></i><b>6</b> Downloading the data</a></li>
+<li class="chapter" data-level="7" data-path="c06-stata.html"><a href="c06-stata.html"><i class="fa fa-check"></i><b>7</b> Analysing PASEC 2019 data in Stata</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="c06-stata.html"><a href="c06-stata.html#loading-data-in-stata"><i class="fa fa-check"></i><b>7.1</b> Loading data in Stata</a></li>
+<li class="chapter" data-level="7.2" data-path="c06-stata.html"><a href="c06-stata.html#applying-english-labels"><i class="fa fa-check"></i><b>7.2</b> Applying English labels</a></li>
+<li class="chapter" data-level="7.3" data-path="c06-stata.html"><a href="c06-stata.html#the-repest-package"><i class="fa fa-check"></i><b>7.3</b> The <code>repest</code> package</a></li>
+<li class="chapter" data-level="7.4" data-path="c06-stata.html"><a href="c06-stata.html#repest-command-syntax"><i class="fa fa-check"></i><b>7.4</b> <code>repest</code> command syntax</a></li>
+<li class="chapter" data-level="7.5" data-path="c06-stata.html"><a href="c06-stata.html#before-you-begin-set-up-repest-for-pasec"><i class="fa fa-check"></i><b>7.5</b> Before you begin: Set up <code>repest</code> for PASEC</a></li>
+<li class="chapter" data-level="7.6" data-path="c06-stata.html"><a href="c06-stata.html#pasec-2019-analyses-examples"><i class="fa fa-check"></i><b>7.6</b> PASEC 2019 Analyses Examples</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="c06-stata.html"><a href="c06-stata.html#calculating-mean-age"><i class="fa fa-check"></i><b>7.6.1</b> Calculating Mean Age</a></li>
+<li class="chapter" data-level="7.6.2" data-path="c06-stata.html"><a href="c06-stata.html#calculating-mean-mathematics-proficiency"><i class="fa fa-check"></i><b>7.6.2</b> Calculating Mean Mathematics Proficiency</a></li>
+<li class="chapter" data-level="7.6.3" data-path="c06-stata.html"><a href="c06-stata.html#moving-beyond-means-summary-statistics-with-repest"><i class="fa fa-check"></i><b>7.6.3</b> Moving beyond means: summary statistics with <code>repest</code></a></li>
+<li class="chapter" data-level="7.6.4" data-path="c06-stata.html"><a href="c06-stata.html#estimating-pasec-2019-proficiency-levels"><i class="fa fa-check"></i><b>7.6.4</b> Estimating PASEC 2019 proficiency levels</a></li>
+<li class="chapter" data-level="7.6.5" data-path="c06-stata.html"><a href="c06-stata.html#testing-for-differences-between-groups"><i class="fa fa-check"></i><b>7.6.5</b> Testing for differences between groups</a></li>
+<li class="chapter" data-level="7.6.6" data-path="c06-stata.html"><a href="c06-stata.html#multivariate-regression"><i class="fa fa-check"></i><b>7.6.6</b> Multivariate Regression</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html"><i class="fa fa-check"></i><b>8</b> Analysing PASEC 2024 data in Stata</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#loading-data-in-stata-1"><i class="fa fa-check"></i><b>8.1</b> Loading data in Stata</a></li>
+<li class="chapter" data-level="8.2" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#applying-english-labels-1"><i class="fa fa-check"></i><b>8.2</b> Applying English labels</a></li>
+<li class="chapter" data-level="8.3" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#the-repest-package-1"><i class="fa fa-check"></i><b>8.3</b> The <code>repest</code> package</a></li>
+<li class="chapter" data-level="8.4" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#repest-command-syntax-1"><i class="fa fa-check"></i><b>8.4</b> <code>repest</code> command syntax</a></li>
+<li class="chapter" data-level="8.5" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#before-you-begin-set-up-repest-for-pasec-2024"><i class="fa fa-check"></i><b>8.5</b> Before you begin: Set up <code>repest</code> for PASEC 2024</a></li>
+<li class="chapter" data-level="8.6" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#pasec-2024-analyses-examples"><i class="fa fa-check"></i><b>8.6</b> PASEC 2024 Analyses Examples</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#calculating-mean-age-by-country"><i class="fa fa-check"></i><b>8.6.1</b> Calculating Mean Age by Country</a></li>
+<li class="chapter" data-level="" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#alt1"><i class="fa fa-check"></i>Alternative to generate the same result - svy</a></li>
+<li class="chapter" data-level="8.6.2" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#calculating-mean-mathematics-proficiency-1"><i class="fa fa-check"></i><b>8.6.2</b> Calculating Mean Mathematics Proficiency</a></li>
+<li class="chapter" data-level="" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#alt2"><i class="fa fa-check"></i>Alternative to generate the same result - pv</a></li>
+<li class="chapter" data-level="8.6.3" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#moving-beyond-means-summary-statistics-with-repest-1"><i class="fa fa-check"></i><b>8.6.3</b> Moving beyond means: summary statistics with <code>repest</code></a></li>
+<li class="chapter" data-level="8.6.4" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#estimating-pasec-2024-proficiency-levels"><i class="fa fa-check"></i><b>8.6.4</b> Estimating PASEC 2024 proficiency levels</a></li>
+<li class="chapter" data-level="8.6.5" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#testing-for-differences-between-groups-1"><i class="fa fa-check"></i><b>8.6.5</b> Testing for differences between groups</a></li>
+<li class="chapter" data-level="8.6.6" data-path="c06-stata-2024.html"><a href="c06-stata-2024.html#multivariate-regression-1"><i class="fa fa-check"></i><b>8.6.6</b> Multivariate Regression</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="c07-r.html"><a href="c07-r.html"><i class="fa fa-check"></i><b>9</b> Analysing PASEC 2019 data in R</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="c07-r.html"><a href="c07-r.html#package-installation"><i class="fa fa-check"></i><b>9.1</b> Package installation</a></li>
+<li class="chapter" data-level="9.2" data-path="c07-r.html"><a href="c07-r.html#loading-data-in-r"><i class="fa fa-check"></i><b>9.2</b> Loading data in R</a></li>
+<li class="chapter" data-level="9.3" data-path="c07-r.html"><a href="c07-r.html#applying-english-labels-2"><i class="fa fa-check"></i><b>9.3</b> Applying English Labels</a></li>
+<li class="chapter" data-level="9.4" data-path="c07-r.html"><a href="c07-r.html#rrepest-command-syntax"><i class="fa fa-check"></i><b>9.4</b> <code>Rrepest</code> command syntax</a></li>
+<li class="chapter" data-level="9.5" data-path="c07-r.html"><a href="c07-r.html#before-you-begin-set-up-rrepest-for-pasec"><i class="fa fa-check"></i><b>9.5</b> Before you begin: Set up <code>Rrepest</code> for PASEC</a></li>
+<li class="chapter" data-level="9.6" data-path="c07-r.html"><a href="c07-r.html#pasec-analyses-examples"><i class="fa fa-check"></i><b>9.6</b> PASEC Analyses Examples</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="c07-r.html"><a href="c07-r.html#calculating-mean-age-by-country-1"><i class="fa fa-check"></i><b>9.6.1</b> Calculating Mean Age by Country</a></li>
+<li class="chapter" data-level="9.6.2" data-path="c07-r.html"><a href="c07-r.html#calculating-mean-mathematics-proficiency-2"><i class="fa fa-check"></i><b>9.6.2</b> Calculating mean mathematics proficiency</a></li>
+<li class="chapter" data-level="9.6.3" data-path="c07-r.html"><a href="c07-r.html#moving-beyond-means-summary-statistics-with-rrepest"><i class="fa fa-check"></i><b>9.6.3</b> Moving beyond means: summary statistics with <code>Rrepest</code></a></li>
+<li class="chapter" data-level="9.6.4" data-path="c07-r.html"><a href="c07-r.html#estimating-pasec-proficiency-levels"><i class="fa fa-check"></i><b>9.6.4</b> Estimating PASEC proficiency levels</a></li>
+<li class="chapter" data-level="9.6.5" data-path="c07-r.html"><a href="c07-r.html#testing-for-differences-between-groups-2"><i class="fa fa-check"></i><b>9.6.5</b> Testing for differences between groups</a></li>
+<li class="chapter" data-level="9.6.6" data-path="c07-r.html"><a href="c07-r.html#multivariate-regression-2"><i class="fa fa-check"></i><b>9.6.6</b> Multivariate regression</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="c07-r-2024.html"><a href="c07-r-2024.html"><i class="fa fa-check"></i><b>10</b> Analysing PASEC 2024 data in R</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="c07-r-2024.html"><a href="c07-r-2024.html#package-installation-1"><i class="fa fa-check"></i><b>10.1</b> Package installation</a></li>
+<li class="chapter" data-level="10.2" data-path="c07-r-2024.html"><a href="c07-r-2024.html#loading-data-in-r-1"><i class="fa fa-check"></i><b>10.2</b> Loading data in R</a></li>
+<li class="chapter" data-level="10.3" data-path="c07-r-2024.html"><a href="c07-r-2024.html#applying-english-labels-3"><i class="fa fa-check"></i><b>10.3</b> Applying English Labels</a></li>
+<li class="chapter" data-level="10.4" data-path="c07-r-2024.html"><a href="c07-r-2024.html#rrepest-command-syntax-1"><i class="fa fa-check"></i><b>10.4</b> <code>Rrepest</code> command syntax</a></li>
+<li class="chapter" data-level="10.5" data-path="c07-r-2024.html"><a href="c07-r-2024.html#before-you-begin-set-up-rrepest-for-pasec-2024"><i class="fa fa-check"></i><b>10.5</b> Before you begin: Set up <code>Rrepest</code> for PASEC 2024</a></li>
+<li class="chapter" data-level="10.6" data-path="c07-r-2024.html"><a href="c07-r-2024.html#pasec-2024-analyses-examples-1"><i class="fa fa-check"></i><b>10.6</b> PASEC 2024 Analyses Examples</a>
+<ul>
+<li class="chapter" data-level="10.6.1" data-path="c07-r-2024.html"><a href="c07-r-2024.html#calculating-mean-age-by-country-2"><i class="fa fa-check"></i><b>10.6.1</b> Calculating Mean Age by Country</a></li>
+<li class="chapter" data-level="10.6.2" data-path="c07-r-2024.html"><a href="c07-r-2024.html#calculating-mean-mathematics-proficiency-3"><i class="fa fa-check"></i><b>10.6.2</b> Calculating mean mathematics proficiency</a></li>
+<li class="chapter" data-level="10.6.3" data-path="c07-r-2024.html"><a href="c07-r-2024.html#moving-beyond-means-summary-statistics-with-rrepest-1"><i class="fa fa-check"></i><b>10.6.3</b> Moving beyond means: summary statistics with <code>Rrepest</code></a></li>
+<li class="chapter" data-level="10.6.4" data-path="c07-r-2024.html"><a href="c07-r-2024.html#estimating-pasec-2024-proficiency-levels-1"><i class="fa fa-check"></i><b>10.6.4</b> Estimating PASEC 2024 proficiency levels</a></li>
+<li class="chapter" data-level="10.6.5" data-path="c07-r-2024.html"><a href="c07-r-2024.html#testing-for-differences-between-groups-3"><i class="fa fa-check"></i><b>10.6.5</b> Testing for differences between groups</a></li>
+<li class="chapter" data-level="10.6.6" data-path="c07-r-2024.html"><a href="c07-r-2024.html#multivariate-regression-3"><i class="fa fa-check"></i><b>10.6.6</b> Multivariate regression</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<p class="guide-home-link">
+  <a href="index.html"><i class="fa fa-arrow-left"></i> Back to guide home</a>
+</p>
+<div id="c06-stata-2024" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number"> 8</span> Analysing PASEC 2024 data in Stata<a href="c06-stata-2024.html#c06-stata-2024" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This section provides a practical introduction to analysing PASEC 2024 data in Stata using the <code>repest</code> package. It is intended for users with a basic working knowledge of Stata and includes step-by-step examples covering common PASEC analyses.</p>
+<div id="loading-data-in-stata-1" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Loading data in Stata<a href="c06-stata-2024.html#loading-data-in-stata-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For hands-on examples we’ll start with the Grade 2 study.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb1-1"><a href="c06-stata-2024.html#cb1-1" tabindex="-1"></a>* Set the path to your working folder <span class="kw">if</span> needed.</span>
+<span id="cb1-2"><a href="c06-stata-2024.html#cb1-2" tabindex="-1"></a>* Paths below are relative to the project root.</span>
+<span id="cb1-3"><a href="c06-stata-2024.html#cb1-3" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="c06-stata-2024.html#cb1-4" tabindex="-1"></a><span class="kw">use</span> <span class="st">&quot;scripts/2024/PASEC2024_GRADE2.dta&quot;</span>, <span class="kw">clear</span></span></code></pre></div>
+<pre><code>(CF_SCHOOL_DICT)</code></pre>
+<p>It is good practice to run your analysis from a do-file rather than the command window, as this makes your work reproducible. All examples in this guide are written as do-file code available here.</p>
+</div>
+<div id="applying-english-labels-1" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Applying English labels<a href="c06-stata-2024.html#applying-english-labels-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The original PASEC datasets are provided in French. To encourage wider use of the rich PASEC data, AFLEARN provides <em>.do</em> files that translates French variable and value labels to English to the Grade 2, 6, 10 microdata files. You can directly download them from the <a href="https://github.com/datafirst-aflearn/pasec-guide/tree/main/data">AFLEARN’s repository</a></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb3-1"><a href="c06-stata-2024.html#cb3-1" tabindex="-1"></a>* Apply English labels</span>
+<span id="cb3-2"><a href="c06-stata-2024.html#cb3-2" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="c06-stata-2024.html#cb3-3" tabindex="-1"></a><span class="kw">do</span> <span class="st">&quot;scripts/2024/pasec2024-grd2-labels-en.do&quot;</span></span>
+<span id="cb3-4"><a href="c06-stata-2024.html#cb3-4" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="c06-stata-2024.html#cb3-5" tabindex="-1"></a>* Show both <span class="kw">numeric</span> <span class="kw">values</span> and <span class="ot">value</span> labels </span>
+<span id="cb3-6"><a href="c06-stata-2024.html#cb3-6" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="c06-stata-2024.html#cb3-7" tabindex="-1"></a><span class="kw">numlabel</span>, add </span></code></pre></div>
+<p>The <code>numlabel, add</code> command displays the numeric code alongside the value label in tabulations, i.e., <em>1. Benin</em> rather than just <em>Benin</em>. This makes it easier to write <em>if</em> conditions using the correct numeric codes in subsequent commands.</p>
+<p>After loading the <em>.do</em> file, let us check if we have the most important variables that repest uses. The five plausible values for language and mathematics are <em>LECT_PV1</em> to <em>LECT_PV5</em> and <em>MATHS_PV1</em> to <em>MATHS_PV5</em>. The final weight is <em>rwgt0</em>. The replicate weights are <em>rwgt1</em> to <em>rwgt50</em> and countries are indicated by <em>ID_PAYS</em>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb4-1"><a href="c06-stata-2024.html#cb4-1" tabindex="-1"></a><span class="kw">describe</span> LECT_PV1-MATHS_PV5 ID_PAYS rwgt0 rwgt1 rwgt50</span></code></pre></div>
+<pre><code>Variable      Storage   Display    Value
+    name         type    format    label      Variable label
+-------------------------------------------------------------------------------
+LECT_PV1        float   %9.0g                 Reading score PV1
+LECT_PV2        float   %9.0g                 Reading score PV2
+LECT_PV3        float   %9.0g                 Reading score PV3
+LECT_PV4        float   %9.0g                 Reading score PV4
+LECT_PV5        float   %9.0g                 Reading score PV5
+MATHS_PV1       float   %9.0g                 Mathematics score PV1
+MATHS_PV2       float   %9.0g                 Mathematics score PV2
+MATHS_PV3       float   %9.0g                 Mathematics score PV3
+MATHS_PV4       float   %9.0g                 Mathematics score PV4
+MATHS_PV5       float   %9.0g                 Mathematics score PV5
+ID_PAYS         float   %9.0g                 Country ID
+rwgt0           double  %12.0g                Final student weight
+rwgt1           double  %12.0g                Replicate weight 1
+rwgt50          double  %12.0g                Replicate weight 50</code></pre>
+</div>
+<div id="the-repest-package-1" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> The <code>repest</code> package<a href="c06-stata-2024.html#the-repest-package-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>To get started, you need to install the <code>repest</code> package once. This package automates the handling of plausible values and replicate weights. This makes it easier to analyse PASEC data correctly in Stata. In the Stata command window, type:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb6-1"><a href="c06-stata-2024.html#cb6-1" tabindex="-1"></a><span class="kw">ssc</span> install repest, <span class="kw">replace</span> </span></code></pre></div>
+<p>You only need to run this command once; there is no need to re-install <code>repest</code> each time you open Stata. The <code>replace</code> option updates the package if a newer version is available.</p>
+</div>
+<div id="repest-command-syntax-1" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> <code>repest</code> command syntax<a href="c06-stata-2024.html#repest-command-syntax-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The basic syntax of the repest command is as follows:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb7-1"><a href="c06-stata-2024.html#cb7-1" tabindex="-1"></a>repest svyname [<span class="kw">if</span>] [<span class="kw">in</span>] , estimate(cmd [,cmd_options]) [options]</span></code></pre></div>
+<ul>
+<li><p><code>svyname</code>: Either one of the study names supported by the package (e,g., PISA, TIMSS, PIRLS) or SVY which allows you to specify the survey design.</p></li>
+<li><p><code>estimate(cmd [,cmd_options)</code>: Specifies the statistical command to run. <code>cmd</code> can be any Stata command that accepts weights — for example, <code>mean</code>, <code>reg</code>, <code>qreg</code>, or the built-in repest commands <code>means</code>, <code>freq</code>, <code>summarize</code>, <code>corr</code> and <code>quantiletable</code>. Command-specific options are passed after a comma within the parentheses.</p></li>
+</ul>
+</div>
+<div id="before-you-begin-set-up-repest-for-pasec-2024" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Before you begin: Set up <code>repest</code> for PASEC 2024<a href="c06-stata-2024.html#before-you-begin-set-up-repest-for-pasec-2024" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>PASEC is not one of the studies supported by the repest package so you will need to use <em>SVY</em> for <code>svyname</code> and specify the survey parameters directly within the <code>svyparm</code> option.</p>
+<p>PASEC 2024 uses the paired Jackknife method for creating the replicate weights. There are <span class="math inline">\(100\)</span> replicate weights in the Grade 6 microdata and <span class="math inline">\(50\)</span> replicate weights in the Grade 2 microdata. The final weight is given by <em>rwgt0</em>, the replicate weights are <em>rwgt1</em> to <em>rwgt9100</em> in the Grade 6 microdata and <em>rwgt1</em> to <em>rwgt50</em> in the Grade 2 microdata. There are five sets of plausible values for each of mathematics, <em>MATHS_PV1</em> to <em>MATHS_PV5</em> and language <em>LECT_PV1</em> to <em>LECT_PV5</em>.</p>
+<p>The required parameters are as follows:</p>
+<table>
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+<col width="20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Survey setting</th>
+<th><code>svyparms()</code> suboption</th>
+<th>PASEC 2024 Grade 10</th>
+<th>PASEC 2024 Grade 6</th>
+<th>PASEC 2024 Grade 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Final weight</td>
+<td><code>final_weight_name()</code></td>
+<td><em>rwgt0</em></td>
+<td><em>rwgt0</em></td>
+<td><em>rwgt0</em></td>
+</tr>
+<tr class="even">
+<td>Replicate weights</td>
+<td><code>rep_weight_name()</code></td>
+<td><em>rwgt*</em></td>
+<td><em>rwgt*</em></td>
+<td><em>rwgt*</em></td>
+</tr>
+<tr class="odd">
+<td>Variance factor</td>
+<td><code>variancefactor()</code></td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Number of replications</td>
+<td><code>NREP()</code></td>
+<td>90</td>
+<td>100</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td>Number of plausible values</td>
+<td><code>NBpv()</code></td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p>Commands for analyzing the grade 2 data will have the following syntax</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb8-1"><a href="c06-stata-2024.html#cb8-1" tabindex="-1"></a>repest SVY [<span class="kw">if</span>] [<span class="kw">in</span>] , estimate(cmd [,cmd_options]) [options] svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1)) </span></code></pre></div>
+<p>For Grade 6, we need to specify that there are 100 replicate weights. Commands for Grade 6 are as follows</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb9-1"><a href="c06-stata-2024.html#cb9-1" tabindex="-1"></a>repest SVY [<span class="kw">if</span>] [<span class="kw">in</span>] , estimate(cmd [,cmd_options]) [options] svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(100) variancefactor(1)) </span></code></pre></div>
+<p>Lastly, Grade 10 is as follows:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb10-1"><a href="c06-stata-2024.html#cb10-1" tabindex="-1"></a>repest SVY [<span class="kw">if</span>] [<span class="kw">in</span>] , estimate(cmd [,cmd_options]) [options] svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(90) variancefactor(1)) </span></code></pre></div>
+</div>
+<div id="pasec-2024-analyses-examples" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> PASEC 2024 Analyses Examples<a href="c06-stata-2024.html#pasec-2024-analyses-examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="calculating-mean-age-by-country" class="section level3 hasAnchor" number="8.6.1">
+<h3><span class="header-section-number">8.6.1</span> Calculating Mean Age by Country<a href="c06-stata-2024.html#calculating-mean-age-by-country" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Let’s start by calculating the average age of students in Grade 2 in Benin. The age variable is <em>qe2a_02</em>. Let’s inspect the <em>ID_PAYS</em> and <em>qe2a_02</em> variables.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb11-1"><a href="c06-stata-2024.html#cb11-1" tabindex="-1"></a><span class="kw">tab</span> ID_PAYS</span></code></pre></div>
+<pre><code> Country ID |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |      1,736        6.43        6.43
+          3 |      1,666        6.17       12.60
+          4 |      2,175        8.05       20.65
+          6 |      1,446        5.35       26.01
+          7 |      1,487        5.51       31.51
+          8 |        852        3.16       34.67
+          9 |      1,263        4.68       39.35
+         10 |      1,569        5.81       45.16
+         11 |      1,302        4.82       49.98
+         12 |      2,071        7.67       57.65
+         13 |      2,171        8.04       65.69
+         16 |      2,764       10.24       75.92
+         18 |      1,549        5.74       81.66
+         19 |      1,567        5.80       87.46
+         20 |      1,962        7.27       94.73
+         21 |      1,424        5.27      100.00
+------------+-----------------------------------
+      Total |     27,004      100.00</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb13-1"><a href="c06-stata-2024.html#cb13-1" tabindex="-1"></a><span class="kw">tab</span> qe2a_02</span></code></pre></div>
+<pre><code>        Age |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          5 |        291        1.08        1.08
+          6 |      2,734       10.12       11.20
+          7 |      7,688       28.47       39.67
+          8 |      7,346       27.20       66.88
+          9 |      3,581       13.26       80.14
+         10 |      2,031        7.52       87.66
+         11 |        890        3.30       90.95
+         12 |        482        1.78       92.74
+         13 |        216        0.80       93.54
+         14 |         99        0.37       93.90
+         15 |         57        0.21       94.12
+         99 |      1,589        5.88      100.00
+------------+-----------------------------------
+      Total |     27,004      100.00</code></pre>
+<p>NOTE: Benin is coded as <span class="math inline">\(1\)</span>. Missing age values are coded as <span class="math inline">\(99\)</span>. Because <span class="math inline">\(99\)</span> is a placeholder used to indicate missing data rather than a learner’s actual age, these observations should be excluded from analyses involving age. Failure to do so will produce misleading results. To calculate the average age of students in Grade <span class="math inline">\(2\)</span> in Benin, the syntax is as follows:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb15-1"><a href="c06-stata-2024.html#cb15-1" tabindex="-1"></a>*Calculating average age <span class="kw">in</span> Benin </span>
+<span id="cb15-2"><a href="c06-stata-2024.html#cb15-2" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="c06-stata-2024.html#cb15-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==1&amp;qe2a_02&lt;99, estimate(<span class="kw">mean</span> qe2a_02) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1)) </span></code></pre></div>
+<pre><code>(file C:\Users\01470380\AppData\Local\Temp\ST_9fa0_000005.tmp not found)
+file C:\Users\01470380\AppData\Local\Temp\ST_9fa0_000005.tmp saved
+
+_pooled.
+ : _pooled
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+     qe2a_02 |   7.109238   .0669689   106.16   0.000     6.977982    7.240495
+------------------------------------------------------------------------------</code></pre>
+<p>Because age is an observed variable rather than a plausible-value variable, repest uses only the sampling variance derived from the replicate weights. The reported standard error therefore reflects uncertainty arising from the sample design but not measurement uncertainty.</p>
+<p>The estimated mean age of Grade 2 students in Benin is <span class="math inline">\(7.11\)</span> years <span class="math inline">\(95%\)</span> CI (<span class="math inline">\(6.98-7.24\)</span>). This may reflect substantial grade repetition and late entry common in the region, with many students aged <span class="math inline">\(9–11\)</span> also enrolled in Grade 2.</p>
+</div>
+<div id="alt1" class="section level3 unnumbered hasAnchor alternativebox-header">
+<h3>Alternative to generate the same result - svy<a href="c06-stata-2024.html#alt1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div class="alternativebox">
+<p>PASEC 2024 provides replicate weights specifically so that users can reproduce the official variance estimation procedure.</p>
+<p>If the public data contain:</p>
+<ul>
+<li><p>the final sampling weight,</p></li>
+<li><p>the sampling strata,</p></li>
+<li><p>the primary sampling units (PSUs),</p></li>
+</ul>
+<p>and these accurately reflect the actual design, then</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb17-1"><a href="c06-stata-2024.html#cb17-1" tabindex="-1"></a><span class="kw">svyset</span> psu [pw=<span class="kw">weight</span>], <span class="kw">strata</span>(<span class="kw">strata</span>) </span>
+<span id="cb17-2"><a href="c06-stata-2024.html#cb17-2" tabindex="-1"></a><span class="kw">svy</span>: <span class="kw">mean</span> <span class="kw">score</span> </span></code></pre></div>
+<p>will generally produce design-consistent standard errors.</p>
+<p>However, this is not always possible as</p>
+<ol style="list-style-type: decimal">
+<li><p>The public design variables may be incomplete or masked.</p></li>
+<li><p>The weighting process may include calibration steps not reflected in the released design variables.</p></li>
+</ol>
+<p>Furthermore, using ordinary survey declarations with <code>svyset</code> will generally not reproduce the official PASEC 2024 standard error.</p>
+<p>Stata’s <code>svyset</code> can be configured to use the paired jackknife replicate weights, producing the standard errors as official PASEC 2024 results.</p>
+<p>The syntax to generate the same result is</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb18-1"><a href="c06-stata-2024.html#cb18-1" tabindex="-1"></a>*<span class="kw">set</span> up <span class="kw">for</span> <span class="kw">svyset</span> to <span class="kw">generate</span> same result: </span>
+<span id="cb18-2"><a href="c06-stata-2024.html#cb18-2" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="c06-stata-2024.html#cb18-3" tabindex="-1"></a><span class="kw">svyset</span> [<span class="kw">pweight</span>=rwgt0], <span class="kw">vce</span>(<span class="kw">jackknife</span>) <span class="kw">jkrweight</span>(rwgt1-rwgt50, <span class="kw">multiplier</span>(1) <span class="kw">fpc</span>(0)) <span class="kw">mse</span> </span>
+<span id="cb18-4"><a href="c06-stata-2024.html#cb18-4" tabindex="-1"></a><span class="kw">svy</span>: <span class="kw">mean</span> qe2a_02 <span class="kw">if</span> ID_PAYS==1&amp; qe2a_02&lt;99 </span></code></pre></div>
+</div>
+<div id="calculating-mean-mathematics-proficiency-1" class="section level3 hasAnchor" number="8.6.2">
+<h3><span class="header-section-number">8.6.2</span> Calculating Mean Mathematics Proficiency<a href="c06-stata-2024.html#calculating-mean-mathematics-proficiency-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now we will use the <span class="math inline">\(5\)</span> plausible values to estimate mean mathematics scores in Benin.</p>
+<p>Plausible Values are a set of multiple imputations. The <code>repest</code> package automatically recognises plausible values when the variable name contains the <span class="math inline">\(@\)</span> symbol.</p>
+<p>For example:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb19-1"><a href="c06-stata-2024.html#cb19-1" tabindex="-1"></a>estimate(<span class="kw">mean</span> MATHS_PV@)</span></code></pre></div>
+<p>tells <code>repest</code> to:</p>
+<p>-analyse all five mathematics plausible values;</p>
+<p>-combine results appropriately; and</p>
+<p>-calculate standard errors that reflect both sampling and measurement uncertainty.</p>
+<p>This allows researchers to obtain valid estimates without having to implement the multiple-imputation calculations manually.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb20-1"><a href="c06-stata-2024.html#cb20-1" tabindex="-1"></a>*Calculating <span class="kw">mean</span> mathematics scores <span class="kw">in</span> Benin </span>
+<span id="cb20-2"><a href="c06-stata-2024.html#cb20-2" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="c06-stata-2024.html#cb20-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==1, estimate(<span class="kw">mean</span> MATHS_PV@) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1))</span></code></pre></div>
+<pre><code>(file C:\Users\01470380\AppData\Local\Temp\ST_31b8_000005.tmp not found)
+file C:\Users\01470380\AppData\Local\Temp\ST_31b8_000005.tmp saved
+
+_pooled.....
+ : _pooled
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   494.7639   5.303955    93.28   0.000     484.3683    505.1594
+------------------------------------------------------------------------------</code></pre>
+<p>The estimated mean mathematics proficiency in Benin is <span class="math inline">\(495\)</span> points. The standard error of <span class="math inline">\(5.30\)</span> reflects both sampling uncertainty and uncertainty arising from the plausible values. The <span class="math inline">\(95\%\)</span> confidence interval indicates that the population mean is likely to lie between <span class="math inline">\(484\)</span> and <span class="math inline">\(505\)</span> points.</p>
+<p>PASEC 2024 proficiency scales are scaled using IRT procedures and should primarily be interpreted comparatively. The absolute value of the scale has no substantive meaning independent of the proficiency framework.</p>
+<p>Unlike age, mathematics proficiency is represented by five plausible values. <code>repest</code> estimates the mean separately for each plausible value, combines the five estimates using multiple-imputation formulas, and then incorporates the replicate-weight variance to produce the final standard error.</p>
+</div>
+<div id="alt2" class="section level3 unnumbered hasAnchor alternativebox-header">
+<h3>Alternative to generate the same result - pv<a href="c06-stata-2024.html#alt2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div class="alternativebox">
+<p>An alternative Stata command for analysing plausible values is pv. The syntax to generate the same result is</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb22-1"><a href="c06-stata-2024.html#cb22-1" tabindex="-1"></a>pv, pv(LECT_PV*) jrr jk(2) <span class="kw">weight</span>(rwgt0) rw(rwgt1-rwgt50): <span class="kw">mean</span>  @pv [aw = @w] <span class="kw">if</span> ID_PAYS==1 </span></code></pre></div>
+</div>
+<p>Now let’s get means of mathematics and literacy for each country by including the <code>by</code> option.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb23-1"><a href="c06-stata-2024.html#cb23-1" tabindex="-1"></a>*Means <span class="kw">of</span> mathematics and literacy <span class="kw">for</span> each country </span>
+<span id="cb23-2"><a href="c06-stata-2024.html#cb23-2" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="c06-stata-2024.html#cb23-3" tabindex="-1"></a>repest SVY, estimate(<span class="kw">mean</span> MATHS_PV@ LECT_PV@) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1)) <span class="kw">by</span>(ID_PAYS) </span></code></pre></div>
+<pre><code>1 3 4 6 7 8 9 10 11 12 13 16 18 19 20 21
+(file C:\Users\01470380\AppData\Local\Temp\ST_8074_000005.tmp not found)
+file C:\Users\01470380\AppData\Local\Temp\ST_8074_000005.tmp saved
+
+1.....
+ID_PAYS : 1
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   494.7639   5.303955    93.28   0.000     484.3683    505.1594
+    LECT_PV_ |   528.5242   6.441977    82.04   0.000     515.8982    541.1503
+------------------------------------------------------------------------------
+
+3.....
+ID_PAYS : 3
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   596.0855   3.520633   169.31   0.000     589.1852    602.9858
+    LECT_PV_ |    623.807   6.410841    97.31   0.000      611.242     636.372
+------------------------------------------------------------------------------
+
+4.....
+ID_PAYS : 4
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   510.0138   6.250004    81.60   0.000      497.764    522.2635
+    LECT_PV_ |   539.1635   7.840757    68.76   0.000     523.7959    554.5311
+------------------------------------------------------------------------------
+
+6.....
+ID_PAYS : 6
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   610.8019   6.124209    99.74   0.000     598.7986    622.8051
+    LECT_PV_ |   629.3771   10.59287    59.42   0.000     608.6154    650.1387
+------------------------------------------------------------------------------
+
+7.....
+ID_PAYS : 7
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   527.5295   5.628778    93.72   0.000     516.4973    538.5617
+    LECT_PV_ |   546.3104    5.63329    96.98   0.000     535.2694    557.3515
+------------------------------------------------------------------------------
+
+8.....
+ID_PAYS : 8
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   547.1311   7.844648    69.75   0.000     531.7558    562.5063
+    LECT_PV_ |   585.7677   8.102657    72.29   0.000     569.8867    601.6486
+------------------------------------------------------------------------------
+
+9.....
+ID_PAYS : 9
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   603.4062   6.897706    87.48   0.000      589.887    616.9255
+    LECT_PV_ |    656.557   11.27684    58.22   0.000     634.4548    678.6592
+------------------------------------------------------------------------------
+
+10.....
+ID_PAYS : 10
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   563.2383   9.097961    61.91   0.000     545.4066      581.07
+    LECT_PV_ |   552.5969   11.89785    46.45   0.000     529.2776    575.9163
+------------------------------------------------------------------------------
+
+11.....
+ID_PAYS : 11
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   592.8169   5.625374   105.38   0.000     581.7913    603.8424
+    LECT_PV_ |   661.9809    7.32281    90.40   0.000     647.6285    676.3334
+------------------------------------------------------------------------------
+
+12.....
+ID_PAYS : 12
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   549.9227   2.852264   192.80   0.000     544.3324    555.5131
+    LECT_PV_ |   576.0935   5.554532   103.72   0.000     565.2069    586.9802
+------------------------------------------------------------------------------
+
+13.....
+ID_PAYS : 13
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   510.8175   8.985231    56.85   0.000     493.2067    528.4282
+    LECT_PV_ |   505.0631   11.29406    44.72   0.000     482.9271     527.199
+------------------------------------------------------------------------------
+
+16.....
+ID_PAYS : 16
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   554.9492    5.59944    99.11   0.000     543.9745    565.9239
+    LECT_PV_ |   602.1907   9.574407    62.90   0.000     583.4252    620.9562
+------------------------------------------------------------------------------
+
+18.....
+ID_PAYS : 18
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |    553.403   2.524699   219.20   0.000     548.4546    558.3513
+    LECT_PV_ |   622.7341   2.804538   222.05   0.000     617.2373    628.2309
+------------------------------------------------------------------------------
+
+19.....
+ID_PAYS : 19
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   555.3132   3.514458   158.01   0.000     548.4249    562.2014
+    LECT_PV_ |   596.1526   4.756013   125.35   0.000     586.8309    605.4742
+------------------------------------------------------------------------------
+
+20.....
+ID_PAYS : 20
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   516.7417   5.887716    87.77   0.000      505.202    528.2814
+    LECT_PV_ |   534.9398   7.586151    70.52   0.000     520.0712    549.8084
+------------------------------------------------------------------------------
+
+21.....
+ID_PAYS : 21
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+   MATHS_PV_ |   486.3882   6.625644    73.41   0.000     473.4021    499.3742
+    LECT_PV_ |   481.8473    6.70271    71.89   0.000     468.7102    494.9844
+------------------------------------------------------------------------------</code></pre>
+<p>There is substantial variation in achievement across participating countries. Congo records the highest Grade 2 mathematics score (<span class="math inline">\(612\)</span> points), while Togo records the lowest (<span class="math inline">\(486\)</span> points). Reading and mathematics performance are strongly correlated across countries, although some countries perform relatively better in one domain than the other. Formal statistical comparisons between countries should be conducted using regression models rather than visual inspection of the means alone.</p>
+<p>Notice that standard errors vary considerably across countries. Sao Tome and Principe (country number <span class="math inline">\(18\)</span>) has notably smaller standard errors than countries such as Mali (<span class="math inline">\(13\)</span>), or Guinea (<span class="math inline">\(10\)</span>). This reflects differences in the homogeneity of performance within schools and the precision of the sampling design in each country.</p>
+<div id="moving-beyond-means-summary-statistics-with-repest-1" class="section level3 hasAnchor" number="8.6.3">
+<h3><span class="header-section-number">8.6.3</span> Moving beyond means: summary statistics with <code>repest</code><a href="c06-stata-2024.html#moving-beyond-means-summary-statistics-with-repest-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>repest</code> has some built in commands that are very useful for analysing large scale assessments, including summary statistics that focus on the full distribution.</p>
+<p>The summarize command generates point estimates and standard errors for a range of statistics beyond the mean, such as percentiles, standard deviations etc. Let’s compare the performance of girls and boys in Djibouti.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb25-1"><a href="c06-stata-2024.html#cb25-1" tabindex="-1"></a>*First create an indicator <span class="kw">for</span> girl </span>
+<span id="cb25-2"><a href="c06-stata-2024.html#cb25-2" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="c06-stata-2024.html#cb25-3" tabindex="-1"></a><span class="kw">gen</span> girl=qe2a_03==2 <span class="kw">if</span> qe2a_03&lt;9 </span>
+<span id="cb25-4"><a href="c06-stata-2024.html#cb25-4" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="c06-stata-2024.html#cb25-5" tabindex="-1"></a>*Beyond <span class="kw">means</span>: looking <span class="fu">at</span> the distribution <span class="kw">of</span> mathematics scores <span class="kw">in</span> Djibouti</span>
+<span id="cb25-6"><a href="c06-stata-2024.html#cb25-6" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="c06-stata-2024.html#cb25-7" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==8, estimate(<span class="kw">summarize</span> MATHS_PV@, <span class="kw">stats</span>(<span class="kw">mean</span> <span class="fu">sd</span> p5 p25 p50 p75 p95)) <span class="kw">by</span>(girl) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1)) </span></code></pre></div>
+<pre><code>(1,589 missing values generated)
+
+0 1
+(file C:\Users\01470380\AppData\Local\Temp\ST_b7c8_000005.tmp not found)
+file C:\Users\01470380\AppData\Local\Temp\ST_b7c8_000005.tmp saved
+
+0.....
+girl : 0
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+MATHS_PV__~n |   563.4237   7.173512    78.54   0.000     549.3639    577.4835
+MATHS_PV__sd |   85.17939   4.688042    18.17   0.000       75.991    94.36778
+MATHS_PV__p5 |   408.4723   19.99637    20.43   0.000     369.2801    447.6645
+MATHS_PV_~25 |    514.046    7.60511    67.59   0.000     499.1402    528.9517
+MATHS_PV_~50 |   570.3229   9.423565    60.52   0.000     551.8531    588.7928
+MATHS_PV_~75 |   620.6008   10.45874    59.34   0.000     600.1021    641.0996
+MATHS_PV_~95 |   692.2158   13.92834    49.70   0.000     664.9167    719.5148
+------------------------------------------------------------------------------
+
+1.....
+girl : 1
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+MATHS_PV__~n |   530.1033   10.38745    51.03   0.000     509.7443    550.4623
+MATHS_PV__sd |    86.9555   6.987285    12.44   0.000     73.26068    100.6503
+MATHS_PV__p5 |   379.6738   24.33896    15.60   0.000     331.9703    427.3773
+MATHS_PV_~25 |   469.6467   17.34991    27.07   0.000     435.6415    503.6519
+MATHS_PV_~50 |   535.0588   12.02952    44.48   0.000     511.4814    558.6363
+MATHS_PV_~75 |   592.3654   12.75701    46.43   0.000     567.3621    617.3687
+MATHS_PV_~95 |   663.1115   10.18245    65.12   0.000     643.1542    683.0687
+------------------------------------------------------------------------------</code></pre>
+<p>Looking beyond average performance reveals important differences across the distribution. Boys in Djibouti have higher mathematics scores at the mean, median and upper tail of the distribution. For example, the median score among boys is approximately <span class="math inline">\(570\)</span> points compared with <span class="math inline">\(535\)</span> points among girls. The percentile estimates show that the gender gap is not confined to a small group of high-performing students but is evident across much of the achievement distribution.</p>
+<p>The <code>quantiletable</code> command creates quantile tables. Let’s look at the distribution of scores in Senegal.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb27-1"><a href="c06-stata-2024.html#cb27-1" tabindex="-1"></a>*Quintile <span class="kw">table</span> <span class="kw">for</span> mathematics and language <span class="kw">in</span> Senegal</span>
+<span id="cb27-2"><a href="c06-stata-2024.html#cb27-2" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="c06-stata-2024.html#cb27-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==19, estimate(quantiletable MATHS_PV@ LECT_PV@, nquantiles(5)) svyparm(NBpv(5)  final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1)) </span></code></pre></div>
+<pre><code>(file C:\Users\01470380\AppData\Local\Temp\ST_b38_000005.tmp not found)
+file C:\Users\01470380\AppData\Local\Temp\ST_b38_000005.tmp saved
+
+_pooled.....
+ : _pooled
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+MATHS_PV__q1 |   443.1243   5.958972    74.36   0.000      431.445    454.8037
+MATHS_PV__q2 |   513.7727   4.487976   114.48   0.000     504.9764     522.569
+MATHS_PV__q3 |   557.5442   3.832698   145.47   0.000     550.0322    565.0561
+MATHS_PV__q4 |    598.808   4.041734   148.16   0.000     590.8863    606.7296
+MATHS_PV__q5 |   663.7587   5.503549   120.61   0.000     652.9719    674.5454
+ LECT_PV__q1 |   499.3449   8.232795    60.65   0.000     483.2089    515.4809
+ LECT_PV__q2 |   556.8995   7.875579    70.71   0.000     541.4637    572.3354
+ LECT_PV__q3 |   591.9717   8.631276    68.58   0.000     575.0547    608.8887
+ LECT_PV__q4 |   633.6612   6.807562    93.08   0.000     620.3186    647.0038
+ LECT_PV__q5 |   699.2852    6.71411   104.15   0.000     686.1257    712.4446
+------------------------------------------------------------------------------</code></pre>
+<p>The quantile table divides the mathematics and reading distributions into five equal-sized groups. The reported values correspond to the score thresholds separating adjacent quintiles. For example, students scoring above approximately <span class="math inline">\(664\)</span> points in mathematics belong to the highest-performing quintile in Senegal.</p>
+<p>Other built-in <code>repest</code> commands are <code>means</code>, <code>freq</code> and <code>corr</code>.</p>
+</div>
+<div id="estimating-pasec-2024-proficiency-levels" class="section level3 hasAnchor" number="8.6.4">
+<h3><span class="header-section-number">8.6.4</span> Estimating PASEC 2024 proficiency levels<a href="c06-stata-2024.html#estimating-pasec-2024-proficiency-levels" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>PASEC 2024 defines a set of proficiency levels that describe what students know and can do at different points along the mathematics scale. In this example, we estimate the proportion of Grade 2 students in Togo who fall into each of the four PASEC mathematics proficiency levels.</p>
+<p>The four proficiency levels for Grade 2 mathematics are defined by PASEC 2024 as follows:</p>
+<table>
+<thead>
+<tr class="header">
+<th>PASEC Proficiency Level</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td><span class="math inline">\(&lt; 400.34\)</span></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td><span class="math inline">\(400.34 – 489.03\)</span></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><span class="math inline">\(489.03–577.73\)</span></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><span class="math inline">\(&gt;577.73\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These boundaries are set on the PASEC international scale and are the same for all countries, enabling cross-country comparisons. If we want to provide estimates for the PASEC defined levels of proficiency, we first need to create dummy variables for each level.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb29-1"><a href="c06-stata-2024.html#cb29-1" tabindex="-1"></a>*Use PASEC defined <span class="kw">levels</span> </span>
+<span id="cb29-2"><a href="c06-stata-2024.html#cb29-2" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="c06-stata-2024.html#cb29-3" tabindex="-1"></a><span class="kw">foreach</span> <span class="kw">var</span> <span class="kw">of</span> <span class="kw">varlist</span> MATHS_PV1-MATHS_PV5 {</span>
+<span id="cb29-4"><a href="c06-stata-2024.html#cb29-4" tabindex="-1"></a>    <span class="kw">gen</span> prop1_<span class="ot">`var&#39;</span> = <span class="ot">`var&#39;</span>&lt;=400.34 <span class="kw">if</span> <span class="ot">`var&#39;</span>&lt;.</span>
+<span id="cb29-5"><a href="c06-stata-2024.html#cb29-5" tabindex="-1"></a>    <span class="kw">gen</span> prop2_<span class="ot">`var&#39;</span> = <span class="ot">`var&#39;</span>&gt;400.34 &amp; <span class="ot">`var&#39;</span>&lt;=489.03 <span class="kw">if</span> <span class="ot">`var&#39;</span>&lt;.</span>
+<span id="cb29-6"><a href="c06-stata-2024.html#cb29-6" tabindex="-1"></a>    <span class="kw">gen</span> prop3_<span class="ot">`var&#39;</span> = <span class="ot">`var&#39;</span>&gt;489.03 &amp; <span class="ot">`var&#39;</span>&lt;577.73 <span class="kw">if</span> <span class="ot">`var&#39;</span>&lt;.</span>
+<span id="cb29-7"><a href="c06-stata-2024.html#cb29-7" tabindex="-1"></a>    <span class="kw">gen</span> prop4_<span class="ot">`var&#39;</span> = <span class="ot">`var&#39;</span>&gt;577.73 <span class="kw">if</span> <span class="ot">`var&#39;</span>&lt;.</span>
+<span id="cb29-8"><a href="c06-stata-2024.html#cb29-8" tabindex="-1"></a>}</span>
+<span id="cb29-9"><a href="c06-stata-2024.html#cb29-9" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="c06-stata-2024.html#cb29-10" tabindex="-1"></a>repest SVY  <span class="kw">if</span> ID_PAYS==21, estimate(<span class="kw">mean</span> prop1_MATHS_PV@ prop2_MATHS_PV@ prop3_MATHS_PV@ prop4_MATHS_PV@ ) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1)) </span></code></pre></div>
+<pre><code>(file C:\Users\01470380\AppData\Local\Temp\ST_8c8_000005.tmp not found)
+file C:\Users\01470380\AppData\Local\Temp\ST_8c8_000005.tmp saved
+
+_pooled.....
+ : _pooled
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+prop1_MATH~_ |   .1801185   .0256648     7.02   0.000     .1298163    .2304206
+prop2_MATH~_ |   .3611156   .0246499    14.65   0.000     .3128027    .4094284
+prop3_MATH~_ |   .2904588   .0291658     9.96   0.000     .2332949    .3476228
+prop4_MATH~_ |   .1683071   .0211009     7.98   0.000       .12695    .2096642
+------------------------------------------------------------------------------</code></pre>
+<p>The results indicate that approximately <span class="math inline">\(18\%\)</span> of Grade 2 students in Togo fall below Level 1, i.e., the lowest proficiency threshold, while around <span class="math inline">\(17\%\)</span> reach the highest level. The largest share of students falls in the middle proficiency levels. Because these estimates are derived from plausible values, the reported standard errors incorporate both measurement and sampling uncertainty.</p>
+</div>
+<div id="testing-for-differences-between-groups-1" class="section level3 hasAnchor" number="8.6.5">
+<h3><span class="header-section-number">8.6.5</span> Testing for differences between groups<a href="c06-stata-2024.html#testing-for-differences-between-groups-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The table below highlights the distinction between two common types of comparisons in PASEC 2024 microdata: within-country comparisons (e.g., boys versus girls in the same country) and between-country comparisons (e.g., Benin versus Burundi). Because these comparisons involve different survey structures, they require slightly different analytical approaches.</p>
+<p>The examples that follow demonstrate how to test for differences in achievement between groups using regression models in repest.</p>
+<table>
+<colgroup>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Comparison Type</th>
+<th>What it measures</th>
+<th>Survey design impact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Within-Country (e.g., Boys vs. Girls in Senegal)</td>
+<td>The gap between two demographic subgroups who share the same sampling strata, schools, and teachers.</td>
+<td>High covariance. Because groups are clustered together in the same schools, their errors are correlated.</td>
+</tr>
+<tr class="even">
+<td>Between-Country (e.g., Senegal vs Benin)</td>
+<td>The gap between two entirely independent populations with completely separate sampling frames</td>
+<td>Zero covariance. Sampling units in Country A have no mathematical relationship to sampling units in Country B</td>
+</tr>
+</tbody>
+</table>
+<p>In <code>repest</code> you should use <code>over</code> for within-country comparisons and <code>by</code> for between-country comparisons. You must not use <code>over</code> for countries. When using <code>svy = "SVY"</code>, The <code>over()</code> option is designed for within-country subgroup comparisons only. Using regression achieves the same goal and works correctly with the SVY option.</p>
+<div id="testing-for-differences-within-countries-between-boys-and-girls-1" class="section level4 hasAnchor" number="8.6.5.1">
+<h4><span class="header-section-number">8.6.5.1</span> Testing for differences within countries: between boys and girls<a href="c06-stata-2024.html#testing-for-differences-within-countries-between-boys-and-girls-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Are there differences in mathematics scores between boys and girls in Chad? We can use linear regression to test for this.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb31-1"><a href="c06-stata-2024.html#cb31-1" tabindex="-1"></a>*Test <span class="kw">for</span> differences between boys and girls mathematics scores <span class="kw">in</span> Chad</span>
+<span id="cb31-2"><a href="c06-stata-2024.html#cb31-2" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="c06-stata-2024.html#cb31-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==20, estimate(<span class="kw">reg</span> MATHS_PV@ girl) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1)) </span></code></pre></div>
+<pre><code>(file C:\Users\01470380\AppData\Local\Temp\ST_8358_000005.tmp not found)
+file C:\Users\01470380\AppData\Local\Temp\ST_8358_000005.tmp saved
+
+_pooled.....
+ : _pooled
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+        girl |  -24.50216   5.175815    -4.73   0.000    -34.64657   -14.35775
+       _cons |   528.0113   6.161407    85.70   0.000     515.9352    540.0874
+------------------------------------------------------------------------------</code></pre>
+<p>The coefficient on girl provides the estimated difference in mathematics proficiency between girls and boys, together with the appropriate standard error and significance test. On average, girls’ scores are <span class="math inline">\(24.5\)</span> points lower than boys in Chad.</p>
+<p>What about differences in the proportion reaching PASEC Level <span class="math inline">\(4\)</span>?</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb33-1"><a href="c06-stata-2024.html#cb33-1" tabindex="-1"></a>*Test differences between boys and girls <span class="kw">in</span> percentage reaching PASEC <span class="dv">level</span> 4 <span class="kw">in</span> Chad </span>
+<span id="cb33-2"><a href="c06-stata-2024.html#cb33-2" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="c06-stata-2024.html#cb33-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==20, estimate(<span class="kw">reg</span> prop4_MATHS_PV@  girl) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1)) </span></code></pre></div>
+<pre><code>(file C:\Users\01470380\AppData\Local\Temp\ST_6e64_000005.tmp not found)
+file C:\Users\01470380\AppData\Local\Temp\ST_6e64_000005.tmp saved
+
+_pooled.....
+ : _pooled
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+        girl |   -.109398   .0337735    -3.24   0.001    -.1755929   -.0432032
+       _cons |   .3396124   .0310147    10.95   0.000     .2788247    .4004001
+------------------------------------------------------------------------------</code></pre>
+<p>Girls are <span class="math inline">\(10.9\)</span> percentage points less likely to reach the highest proficiency level in mathematics than boys in Chad.</p>
+</div>
+<div id="testing-for-differences-between-countries-1" class="section level4 hasAnchor" number="8.6.5.2">
+<h4><span class="header-section-number">8.6.5.2</span> Testing for differences between countries<a href="c06-stata-2024.html#testing-for-differences-between-countries-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Are there differences in mean mathematics scores between Chad and Senegal?</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb35-1"><a href="c06-stata-2024.html#cb35-1" tabindex="-1"></a>*Test differences <span class="kw">in</span> mathematics scores between Chad and Senegal </span>
+<span id="cb35-2"><a href="c06-stata-2024.html#cb35-2" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="c06-stata-2024.html#cb35-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==19 | ID_PAYS==20, estimate(<span class="kw">reg</span> MATHS_PV@ i.ID_PAYS) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1))  </span></code></pre></div>
+<pre><code>(file C:\Users\01470380\AppData\Local\Temp\ST_87e8_000005.tmp not found)
+file C:\Users\01470380\AppData\Local\Temp\ST_87e8_000005.tmp saved
+
+_pooled.....
+ : _pooled
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+_19b_ID_PAYS |          0  (omitted)
+ _20_ID_PAYS |  -38.57143   6.010521    -6.42   0.000    -50.35184   -26.79103
+       _cons |   555.3132   3.514458   158.01   0.000     548.4249    562.2014
+------------------------------------------------------------------------------</code></pre>
+<p>Mathematics proficiency levels are <span class="math inline">\(30.4\)</span> points lower in Chad compared to Senegal, a statistically significant difference.</p>
+</div>
+<div id="testing-for-differences-in-percentiles-1" class="section level4 hasAnchor" number="8.6.5.3">
+<h4><span class="header-section-number">8.6.5.3</span> Testing for differences in percentiles<a href="c06-stata-2024.html#testing-for-differences-in-percentiles-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You cannot use standard linear regression (<code>regress</code>) because it only models the conditional arithmetic mean. Instead, to test differences in percentiles, you must use quantile regression (<code>qreg</code>) .</p>
+<p>Quantile regression works exactly like linear regression, but instead of drawing a line through the average of the data, it draws a line through a specific percentile (quantile) of the data.</p>
+<ul>
+<li><p><code>qreg, quantile(0.50)</code> models the Median (<span class="math inline">\(50th\)</span> Percentile).</p></li>
+<li><p><code>qreg, quantile(0.25)</code> models the <span class="math inline">\(25th\)</span> Percentile (Lower Bound).</p></li>
+<li><p><code>qreg, quantile(0.75)</code> models the <span class="math inline">\(75th\)</span> Percentile (Upper Bound).</p></li>
+</ul>
+<p>Just like <code>regress</code>, <code>qreg</code> returns standard coefficients (<span class="math inline">\(\beta\)</span>) and standard error matrices (<span class="math inline">\(e(b)\)</span>).</p>
+<p>If we want to test for differences in percentiles, we can use quantile regression. Let’s test for differences at the <span class="math inline">\(25th\)</span> and <span class="math inline">\(75th\)</span> percentile between boys and girls in Chad.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb37-1"><a href="c06-stata-2024.html#cb37-1" tabindex="-1"></a>*Test <span class="kw">for</span> differences <span class="fu">at</span> the 25th and 75th percentile between boys and girls <span class="kw">in</span> Chad</span>
+<span id="cb37-2"><a href="c06-stata-2024.html#cb37-2" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="c06-stata-2024.html#cb37-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==20, estimate(<span class="kw">qreg</span> MATHS_PV@ girl, <span class="kw">quantile</span>(0.25)) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1))</span></code></pre></div>
+<pre><code>(file C:\Users\01470380\AppData\Local\Temp\ST_4624_000005.tmp not found)
+file C:\Users\01470380\AppData\Local\Temp\ST_4624_000005.tmp saved
+
+_pooled.....
+ : _pooled
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+        girl |  -19.06924   9.937326    -1.92   0.055    -38.54605    .4075576
+       _cons |   455.9702   10.01524    45.53   0.000     436.3407    475.5997
+------------------------------------------------------------------------------</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb39-1"><a href="c06-stata-2024.html#cb39-1" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==20, estimate(<span class="kw">qreg</span> MATHS_PV@ girl, <span class="kw">quantile</span>(0.75)) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1))  </span></code></pre></div>
+<pre><code>(file C:\Users\01470380\AppData\Local\Temp\ST_9fc0_000005.tmp not found)
+file C:\Users\01470380\AppData\Local\Temp\ST_9fc0_000005.tmp saved
+
+_pooled.....
+ : _pooled
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+        girl |  -26.58806   9.241682    -2.88   0.004    -44.70143   -8.474698
+       _cons |   598.9921   7.542716    79.41   0.000     584.2086    613.7755
+------------------------------------------------------------------------------</code></pre>
+<p>The gap between boys and girls increases from <span class="math inline">\(19.0\)</span> points at the <span class="math inline">\(25th\)</span> percentile to <span class="math inline">\(26.6\)</span> points at the <span class="math inline">\(75th\)</span> percentile in Chad.</p>
+</div>
+</div>
+<div id="multivariate-regression-1" class="section level3 hasAnchor" number="8.6.6">
+<h3><span class="header-section-number">8.6.6</span> Multivariate Regression<a href="c06-stata-2024.html#multivariate-regression-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Now let’s use the Grade <span class="math inline">\(6\)</span> data. There are <span class="math inline">\(100\)</span> replicate weights so we will need to replace <code>NREP(50)</code> with <code>NREP(100)</code> in the <code>svyparm()</code> suboptions.</p>
+<p>The Grade 6 setup is as follows</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb41-1"><a href="c06-stata-2024.html#cb41-1" tabindex="-1"></a>repest SVY [<span class="kw">if</span>] [<span class="kw">in</span>] , estimate(cmd [,cmd_options]) [options] svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(100) variancefactor(1)) </span></code></pre></div>
+<p>In this example, we’ll analyse the association between students’ math scores (<strong>MATHS_PV@</strong>) and their gender (<strong>qe6a_03</strong>) and socio-economic status (<strong>SES</strong>) in Congo. The <em>SES</em> variable is a composite socioeconomic status index derived from the PASEC 2024 household questionnaire.</p>
+<p>Firstly, load the microdata below</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb42-1"><a href="c06-stata-2024.html#cb42-1" tabindex="-1"></a>* Load Grade 6 <span class="kw">data</span></span>
+<span id="cb42-2"><a href="c06-stata-2024.html#cb42-2" tabindex="-1"></a><span class="kw">use</span> <span class="st">&quot;scripts/2024/PASEC2024_GRADE6.dta&quot;</span>, <span class="kw">clear</span></span></code></pre></div>
+<p>Then, apply the English variable and value labels to the microdata as follows:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb43-1"><a href="c06-stata-2024.html#cb43-1" tabindex="-1"></a>* Apply English labels</span>
+<span id="cb43-2"><a href="c06-stata-2024.html#cb43-2" tabindex="-1"></a><span class="kw">do</span> <span class="st">&quot;scripts/2024/pasec2024-grd6-labels-en.do&quot;</span></span>
+<span id="cb43-3"><a href="c06-stata-2024.html#cb43-3" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="c06-stata-2024.html#cb43-4" tabindex="-1"></a>* Show both <span class="kw">numeric</span> <span class="kw">values</span> and <span class="ot">value</span> labels</span>
+<span id="cb43-5"><a href="c06-stata-2024.html#cb43-5" tabindex="-1"></a><span class="kw">numlabel</span>, add</span></code></pre></div>
+<pre><code>qe6a_01_b: all characters numeric; replaced as long
+(1055 missing values generated)</code></pre>
+<p>We need the <strong>girl</strong> indicator variable</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb45-1"><a href="c06-stata-2024.html#cb45-1" tabindex="-1"></a>* Fist <span class="kw">generate</span> an indicator <span class="kw">variable</span> <span class="kw">for</span> girl </span>
+<span id="cb45-2"><a href="c06-stata-2024.html#cb45-2" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="c06-stata-2024.html#cb45-3" tabindex="-1"></a><span class="kw">gen</span> girl=qe6a_03==2 <span class="kw">if</span> qe6a_03&lt;9 </span></code></pre></div>
+<pre><code>(6 missing values generated)</code></pre>
+<p>Now, we set up to test the association between the mathematics scores and socio-economic status and gender</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode stata"><code class="sourceCode stata"><span id="cb47-1"><a href="c06-stata-2024.html#cb47-1" tabindex="-1"></a>*Association between mathematics scores and socio-economic status and gender </span>
+<span id="cb47-2"><a href="c06-stata-2024.html#cb47-2" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="c06-stata-2024.html#cb47-3" tabindex="-1"></a>repest SVY <span class="kw">if</span> ID_PAYS==6, estimate(<span class="kw">reg</span> MATHS_PV@ SES girl) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(100) variancefactor(1)) results(add(r2 <span class="kw">N</span>)) </span></code></pre></div>
+<pre><code>(file C:\Users\01470380\AppData\Local\Temp\ST_2130_000005.tmp not found)
+file C:\Users\01470380\AppData\Local\Temp\ST_2130_000005.tmp saved
+
+_pooled.....
+ : _pooled
+------------------------------------------------------------------------------
+             | Coefficient  Std. err.      z    P&gt;|z|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+         SES |   1.808814   .3285803     5.50   0.000     1.164808    2.452819
+        girl |   4.130681    3.08856     1.34   0.181    -1.922785    10.18415
+       _cons |   370.3863   17.72145    20.90   0.000     335.6529    405.1197
+        e_r2 |   .0546121   .0207716     2.63   0.009     .0139006    .0953237
+         e_N |       4398   242.2705    18.15   0.000     3923.159    4872.841
+------------------------------------------------------------------------------</code></pre>
+<p>The regression estimates the association between mathematics proficiency, socioeconomic status (<em>SES</em>), and gender among Grade 6 students in Congo while correctly accounting for both plausible values and the PASEC 2024 replicate-weight design.</p>
+<p>The results indicate a strong positive association between socioeconomic status and mathematics achievement. A one-unit increase in the <em>SES</em> index is associated with an increase of approximately <span class="math inline">\(1.81\)</span> points in mathematics proficiency (<em>coefficient</em> <span class="math inline">\(= 1.81\)</span>, p <span class="math inline">\(&lt; 0.001\)</span>). This relationship is statistically significant, suggesting that students from more advantaged socioeconomic backgrounds tend to perform better in mathematics.</p>
+<p>The coefficient on the <em>girl</em> indicator is <span class="math inline">\(4.13\)</span> (<em>p</em> <span class="math inline">\(= 0.181\)</span>), indicating that girls score, on average, about <span class="math inline">\(4\)</span> points higher than boys with similar socioeconomic status. However, p-value reveals that this relationship is statistically insignificant. Because <em>SES</em> is included in the model, this estimated gender gap reflects differences between boys and girls after accounting for socioeconomic background.</p>
+<p>The constant term (<span class="math inline">\(370\)</span>) represents the predicted mathematics score for a boy with an <em>SES</em> value of zero. While the intercept is necessary for estimation, it is typically of limited substantive interest because an <em>SES</em> value of zero may not correspond to a meaningful student profile.</p>
+<p>Overall, the results suggest that both socioeconomic status and gender are important correlates of mathematics achievement in Congo. Higher socioeconomic status is associated with better performance, while girls perform less well than boys on average, even after controlling for socioeconomic differences.</p>
+<p>It is important to remember that these coefficients describe associations rather than causal effects. The regression does not imply that increasing a student’s socioeconomic status by one unit would necessarily increase their mathematics score by <span class="math inline">\(1.81\)</span> points. Other factors associated with socioeconomic status, such as school quality, parental education, household resources, and learning opportunities, may also contribute to the observed relationship.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="c06-stata.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="c07-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/datafirst-aflearn/pasec-guide/edit/main/08-stata-2024.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": "https://github.com/datafirst-aflearn/pasec-guide/blob/main/08-stata-2024.Rmd",
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

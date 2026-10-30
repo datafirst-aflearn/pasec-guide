@@ -5,8 +5,8 @@ This section provides a practical introduction to analysing PASEC 2019 data in S
 ```{r setup-stata, include=FALSE}
 library(Statamarkdown)
 
-stataexe <- "C:/Program Files/Stata18/StataMP-64.exe"
-root_dir <- normalizePath(".", winslash = "/", mustWork = TRUE)
+stataexe = "C:/Program Files/Stata18/StataMP-64.exe"
+root_dir = normalizePath(".", winslash = "/", mustWork = TRUE)
 
 knitr::opts_chunk$set(
   engine.path = list(stata = stataexe),
@@ -221,14 +221,14 @@ Unlike age, mathematics proficiency is represented by five plausible values. `re
 :::
 
 ::: {.alternativebox data-latex="{Alternative to generate the same result - pv}"}
-An alternative Stata command for analysing plausible values is pv. The syntax to generate the same result is
+An alternative Stata command for analysing plausible values is `pv`. The syntax to generate the same result is
 
 ```{stata eval=FALSE, include=TRUE}
 pv, pv(LECT_PV*) jrr jk(2) weight(rwgt0) rw(rwgt1-rwgt45): mean  @pv [aw = @w] if ID_PAYS==1 
 ```
 :::
 
-Now let’s get means of mathematics and literacy for each country by including the by option.
+Now let’s get means of mathematics and literacy for each country by including the **by** option.
 
 ```{stata, collectcode=TRUE}
 *Means of mathematics and literacy for each country 
@@ -238,7 +238,7 @@ repest SVY, estimate(mean MATHS_PV@ LECT_PV@) svyparm(NBpv(5) final_weight_name(
 
 There is substantial variation in achievement across participating countries. Burundi records the highest Grade 2 mathematics score ($614$ points), while Togo records the lowest ($489$ points). Reading and mathematics performance are strongly correlated across countries, although some countries perform relatively better in one domain than the other. Formal statistical comparisons between countries should be conducted using regression models rather than visual inspection of the means alone.
 
-Notice that standard errors vary considerably across countries - Burundi (country $3$) has notably smaller standard errors than countries such as Gabon ($7$) or Guinea ($8$). This reflects differences in the homogeneity of performance within schools and the precision of the sampling design in each country.
+Notice that standard errors vary considerably across countries. Burundi (country $3$) has notably smaller standard errors than countries such as Gabon ($7$) or Guinea ($8$). This reflects differences in the homogeneity of performance within schools and the precision of the sampling design in each country.
 
 ### Moving beyond means: summary statistics with `repest`
 
@@ -318,7 +318,7 @@ The examples that follow demonstrate how to test for differences in achievement 
 
 In `repest` you should use `over` for within-country comparisons and `by` for between-country comparisons. You must not use `over` for countries. When using `svy = "SVY"`, THE `over()` option is designed for within-country subgroup comparisons only. Using regression achieves the same goal and works correctly with the SVY option.
 
-#### Testing for differences within countries - differences between boys and girls
+#### Testing for differences within countries: between boys and girls
 
 Are there differences in mathematics scores between boys and girls? We can use linear regression to test for this.
 
@@ -383,20 +383,24 @@ The gap between boys and girls increases from $19.3$ points at the $25th$ percen
 
 ### Multivariate Regression
 
-Now let’s use the Grade $6$ data. There are $90$ replicate weights so we will need to replace `NREP(45)` with `NREP(90)` in the `svyparm()` suboptions.
+Now let's use the Grade $6$ data. There are $90$ replicate weights so we will need to replace `NREP(45)` with `NREP(90)` in the `svyparm()` suboptions.
 
-Grade 6 setup
+The Grade 6 setup is as follows:
 
 ```{stata, eval=FALSE, include=TRUE}
 repest SVY [if] [in] , estimate(cmd [,cmd_options]) [options] svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(90) variancefactor(1)) 
 ```
 
-In this example, we’ll analyze the association between students’ math scores (*MATHS_PV\@*) and their gender (*qe63*) and socio-economic status (*ses*) in Cote D’Ivoire. The ses variable is a composite socioeconomic status index derived from the PASEC household questionnaire.
+In this example, we will analyse the association between students’ math scores (**MATHS_PV\@**) and their gender (**qe63**) and socio-economic status (**ses**) in Cote D’Ivoire. The **ses** variable is a composite socioeconomic status index derived from the PASEC 2019 household questionnaire. 
+
+Firstly, load the microdata below
 
 ```{stata load-grade6, collectcode=TRUE}
 * Load Grade 6 data
 use "scripts/2019/PASEC2019_GRADE6_INT.dta", clear
 ```
+
+Then, apply the English variable and value labels to the microdata as follows:
 
 ```{stata apply-labels-grade6, collectcode=TRUE}
 * Apply English labels
@@ -406,6 +410,8 @@ do "scripts/2019/PASEC2019_Grade6_EN_labels.do"
 numlabel, add
 ```
 
+We need the **girl** indicator variable 
+
 ```{stata, collectcode=TRUE}
 * Fist generate an indicator variable for girl 
 
@@ -413,17 +419,19 @@ gen girl=qe63==2 if qe63<9
 
 ```
 
+Now, we set up to test the association between the mathematics scores and socio-economic status and gender 
+
 ```{stata, collectcode=TRUE}
-*Association between mathematics scores and socio-economic status and gender 
+
 
 repest SVY if ID_PAYS==6, estimate(reg MATHS_PV@ ses girl) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(90) variancefactor(1)) results(add(r2 N)) 
 ```
 
-The `results(add(r2 N))` option: This option allows you to add extra statistics to the results table, which Stata stores by default. Here, we add R-squared (`e_r2`) - a measure of model fit, and number of observations (`e_N`). Note that `repest` stores these additional statistics internally as `e_r2` and `e_N`, and these are the names shown in the output table.
+The `results(add(r2 N))` option allows you to add extra statistics to the results table, which Stata stores by default. Here, we add $R^2$, identified by `e_r2`, and number of observations (`e_N`). Note that `repest` stores these additional statistics internally as `e_r2` and `e_N`, and these are the names shown in the output table.
 
-The regression estimates the association between mathematics proficiency, socioeconomic status (SES), and gender among Grade $6$ students in Côte d'Ivoire while correctly accounting for both plausible values and the PASEC replicate-weight design.
+The regression estimates the association between mathematics proficiency, socioeconomic status (SES), and gender among Grade $6$ students in Côte d'Ivoire while correctly accounting for both plausible values and the PASEC 2019 replicate weight design.
 
-The results indicate a strong positive association between socioeconomic status and mathematics achievement. A one-unit increase in the SES index is associated with an increase of approximately $2.17$ points in mathematics proficiency (coefficient $= 2.17$, $p < 0.001$). This relationship is statistically significant, suggesting that students from more advantaged socioeconomic backgrounds tend to perform better in mathematics.
+The results show a strong positive association between socioeconomic status and mathematics achievement. A one-unit increase in the SES index is associated with an increase of approximately $2.17$ points in mathematics proficiency (coefficient $= 2.17$, $p < 0.001$). This relationship is statistically significant, suggesting that students from more advantaged socioeconomic backgrounds tend to perform better in mathematics.
 
 The coefficient on the female indicator (girl) is $-11.62$ ($p < 0.001$), indicating that girls score, on average, about 12 points lower than boys with similar socioeconomic status. Because SES is included in the model, this estimated gender gap reflects differences between boys and girls after accounting for socioeconomic background.
 

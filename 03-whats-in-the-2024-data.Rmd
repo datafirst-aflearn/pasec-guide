@@ -1,4 +1,4 @@
-# What's in the PASEC 2024 data? {#ch-whats-in-data}
+# What's in the PASEC 2024 data? {#ch-whats-in-2024-data}
 
 ```{css, echo=FALSE}
 .pasec-table-wrap {
@@ -37,7 +37,7 @@
 }
 ```
 
-The public release comprises a Grade 2, 6 and 10 microdata including all 16 countries. These learner microdata contain both the learner level assessment and contextual questionnaire data. In addition, each microdata contains responses to the principal, teacher and parent questionnaires.
+The public release comprises a Grade 2, 6 and 10 microdata files including all 16 countries. These learner microdata files contain both the learner level assessment and contextual questionnaire data. In addition, each microdata contains responses to the principal, teacher and parent questionnaires.
 
 ```{=html}
 <div class="pasec-table-wrap">
@@ -153,6 +153,10 @@ The PASEC 2024 Grade 2 student assessment was designed to measure foundational l
 
 Unlike the Grade 2 assessment, the Grade 6 assessment was administered as a group-based written test and consisted entirely of multiple-choice questions (MCQs), with response options coded from 1 to 4. To accommodate the large volume of assessment content, PASEC used a rotating booklet design, whereby students were randomly assigned one of four booklets (A, B, C, or D) within each selected class. The assessment lasted up to two hours per subject.
 
+## Grade 10 student assessment
+
+In 2024, an assessment for the end of lower secondary school (Grade 10) was included for the first time. This was administered as a group-based written test. The language assessment includes comprehension of narrative, descriptive and argumentative texts, and ranges from identifying explicit information to inference and interpretation. The mathematics assessment includes arithmetic and algebra, measurement, geometry, and statistics.
+
 
 ### Areas assessed by PASEC 2024 in reading 
 
@@ -168,7 +172,7 @@ Unlike the Grade 2 assessment, the Grade 6 assessment was administered as a grou
     <td>Isolated pictures, words and sentences (28%)</td>
   </tr>
   <tr>
-    <td>Text comprehension: Reading comprehension was assessed through exercises requiring students to read narrative and informative texts as well as documents, and then extract information, perform simple inferences, and interpret and combine information. Developing skills in this area enables students to read autonomously in a variety of everyday situations and thus develop their knowledge and participate in society</td>
+    <td>Text comprehension: Assessed through exercises requiring students to read narrative and informative texts as well as documents, and then extract information, perform simple inferences, and interpret and combine information. Developing skills in this area enables students to read autonomously in a variety of everyday situations and thus develop their knowledge and participate in society</td>
     <td>Literary texts (31%). Informational texts and documents (40%)</td>
   </tr>
 </table>
@@ -207,9 +211,9 @@ Unlike the Grade 2 assessment, the Grade 6 assessment was administered as a grou
 
 *Source: PASEC 2024 Test Framework: Language and Mathematics at the End of Primary School, Table 2*
 
-## Student Reading and Mathematics Proficiency Scores
+## Proficiency Scales
 
-PASEC uses Item Response Theory (IRT) to estimate student proficiency in reading and mathematics from responses to the assessment items together with background information. These estimates are provided as five plausible values for reading (**LECT_PV1 – LECT_PV5**) and five plausible values for mathematics (**MATHS_PV1 – MATHS_PV5**). The microdata also include plausible values for the various content domains included in each assessment. The table below provides the variable names and descriptions for these domain plausible values. Learn more about [plausible values](c03-plausible-values.html) and how to use them in your analysis.
+PASEC 2024 uses Item Response Theory (IRT) to estimate student proficiency in reading and mathematics from responses to the assessment items together with background information. These estimates are provided as five plausible values for reading (**LECT_PV1 – LECT_PV5**) and five plausible values for mathematics (**MATHS_PV1 – MATHS_PV5**). The microdata also include plausible values for the various content domains included in each assessment. The table below provides the variable names and descriptions for these domain plausible values. Learn more about [plausible values](c03-plausible-values.html) and how to use them in your analysis.
 
 ```{=html}
 <div class="pasec-table-wrap">
@@ -224,189 +228,189 @@ PASEC uses Item Response Theory (IRT) to estimate student proficiency in reading
     <tr>
       <td>Reading</td>
       <td>Content domain</td>
-      <td class="var">LECT_ARGU_PV1, LECT_ARGU_PV2, LECT_ARGU_PV3, LECT_ARGU_PV4, LECT_ARGU_PV5</td>
+      <td class="var">LECT_ARGU_PV1 - LECT_ARGU_PV5</td>
       <td>Argumentative domain (explicit comprehension)</td>
       <td>Grade 10</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Content domain</td>
-      <td class="var">LECT_DECO_PV1, LECT_DECO_PV2, LECT_DECO_PV3, LECT_DECO_PV4, LECT_DECO_PV5</td>
+      <td class="var">LECT_DECO_PV1 - LECT_DECO_PV5</td>
       <td>Decoding domain</td>
       <td>Grade 2</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Content domain</td>
-      <td class="var">LECT_DESC_PV1, LECT_DESC_PV2, LECT_DESC_PV3, LECT_DESC_PV4, LECT_DESC_PV5</td>
+      <td class="var">LECT_DESC_PV1 - LECT_DESC_PV5</td>
       <td>Descriptive domain (complex inference)</td>
       <td>Grade 10</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Content domain</td>
-      <td class="var">LECT_ECR_PV1, LECT_ECR_PV2, LECT_ECR_PV3, LECT_ECR_PV4, LECT_ECR_PV5</td>
+      <td class="var">LECT_ECR_PV1 - LECT_ECR_PV5</td>
       <td>Written domain</td>
       <td>Grade 2</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Content domain</td>
-      <td class="var">LECT_INFDOC_PV1, LECT_INFDOC_PV2, LECT_INFDOC_PV3, LECT_INFDOC_PV4, LECT_INFDOC_PV5</td>
+      <td class="var">LECT_INFDOC_PV1 - LECT_INFDOC_PV5</td>
       <td>Informational texts and documents domain</td>
       <td>Grade 6</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Content domain</td>
-      <td class="var">LECT_MOPHI_PV1, LECT_MOPHI_PV2, LECT_MOPHI_PV3, LECT_MOPHI_PV4, LECT_MOPHI_PV5</td>
+      <td class="var">LECT_MOPHI_PV1 - LECT_MOPHI_PV5</td>
       <td>Isolated words and sentences domain</td>
       <td>Grade 6</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Content domain</td>
-      <td class="var">LECT_NARR_PV1, LECT_NARR_PV2, LECT_NARR_PV3, LECT_NARR_PV4, LECT_NARR_PV5</td>
+      <td class="var">LECT_NARR_PV1 - LECT_NARR_PV5</td>
       <td>Narrative texts domain</td>
       <td>Grade 6</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Content domain</td>
-      <td class="var">LECT_NARR_PV1, LECT_NARR_PV2, LECT_NARR_PV3, LECT_NARR_PV4, LECT_NARR_PV5</td>
+      <td class="var">LECT_NARR_PV1 - LECT_NARR_PV5</td>
       <td>Narrative domain (interpret, combine and summarise)</td>
       <td>Grade 10</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Content domain</td>
-      <td class="var">LECT_ORAL_PV1, LECT_ORAL_PV2, LECT_ORAL_PV3, LECT_ORAL_PV4, LECT_ORAL_PV5</td>
+      <td class="var">LECT_ORAL_PV1 - LECT_ORAL_PV5</td>
       <td>Oral domain</td>
       <td>Grade 2</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Cognitive process</td>
-      <td class="var">LECT_COMEXP_PV1, LECT_COMEXP_PV2, LECT_COMEXP_PV3, LECT_COMEXP_PV4, LECT_COMEXP_PV5</td>
+      <td class="var">LECT_COMEXP_PV1 - LECT_COMEXP_PV5</td>
       <td>Explicit comprehension</td>
       <td>Grade 10</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Cognitive process</td>
-      <td class="var">LECT_INFOEX_PV1, LECT_INFOEX_PV2, LECT_INFOEX_PV3, LECT_INFOEX_PV4, LECT_INFOEX_PV5</td>
+      <td class="var">LECT_INFOEX_PV1 - LECT_INFOEX_PV5</td>
       <td>Extract explicit information</td>
       <td>Grade 6</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Cognitive process</td>
-      <td class="var">LECT_INFCOM_PV1, LECT_INFCOM_PV2, LECT_INFCOM_PV3, LECT_INFCOM_PV4, LECT_INFCOM_PV5</td>
+      <td class="var">LECT_INFCOM_PV1 - LECT_INFCOM_PV5</td>
       <td>Complex inference</td>
       <td>Grade 10</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Cognitive process</td>
-      <td class="var">LECT_INFSIMP_PV1, LECT_INFSIMP_PV2, LECT_INFSIMP_PV3, LECT_INFSIMP_PV4, LECT_INFSIMP_PV5</td>
+      <td class="var">LECT_INFSIMP_PV1 - LECT_INFSIMP_PV5</td>
       <td>Make simple inferences</td>
       <td>Grade 6 and Grade 10</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Cognitive process</td>
-      <td class="var">LECT_INTERCOM_PV1, LECT_INTERCOM_PV2, LECT_INTERCOM_PV3, LECT_INTERCOM_PV4, LECT_INTERCOM_PV5</td>
+      <td class="var">LECT_INTERCOM_PV1 - LECT_INTERCOM_PV5</td>
       <td>Interpret and combine information</td>
       <td>Grade 6</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Cognitive process</td>
-      <td class="var">LECT_INTERCOM_PV1, LECT_INTERCOM_PV2, LECT_INTERCOM_PV3, LECT_INTERCOM_PV4, LECT_INTERCOM_PV5</td>
+      <td class="var">LECT_INTERCOM_PV1 - LECT_INTERCOM_PV5</td>
       <td>Interpret, combine and summarise information</td>
       <td>Grade 10</td>
     </tr>
     <tr>
       <td>Reading</td>
       <td>Cognitive process</td>
-      <td class="var">LECT_RECON_PV1, LECT_RECON_PV2, LECT_RECON_PV3, LECT_RECON_PV4, LECT_RECON_PV5</td>
+      <td class="var">LECT_RECON_PV1 - LECT_RECON_PV5</td>
       <td>Decode and recognise information</td>
       <td>Grade 6</td>
     </tr>
     <tr>
       <td>Mathematics</td>
       <td>Content domain</td>
-      <td class="var">MATHS_ARAL_PV1, MATHS_ARAL_PV2, MATHS_ARAL_PV3, MATHS_ARAL_PV4, MATHS_ARAL_PV5</td>
+      <td class="var">MATHS_ARAL_PV1 - MATHS_ARAL_PV5</td>
       <td>Arithmetic and algebra domain</td>
       <td>Grade 10</td>
     </tr>
     <tr>
       <td>Mathematics</td>
       <td>Content domain</td>
-      <td class="var">MATHS_GEM_PV1, MATHS_GEM_PV2, MATHS_GEM_PV3, MATHS_GEM_PV4, MATHS_GEM_PV5</td>
+      <td class="var">MATHS_GEM_PV1 - MATHS_GEM_PV5</td>
       <td>Geometry, space and measurement domain</td>
       <td>Grade 2</td>
     </tr>
     <tr>
       <td>Mathematics</td>
       <td>Content domain</td>
-      <td class="var">MATHS_GEOES_PV1, MATHS_GEOES_PV2, MATHS_GEOES_PV3, MATHS_GEOES_PV4, MATHS_GEOES_PV5</td>
+      <td class="var">MATHS_GEOES_PV1 - MATHS_GEOES_PV5</td>
       <td>Geometry and space domain</td>
       <td>Grade 6</td>
     </tr>
     <tr>
       <td>Mathematics</td>
       <td>Content domain</td>
-      <td class="var">MATHS_GEOM_PV1, MATHS_GEOM_PV2, MATHS_GEOM_PV3, MATHS_GEOM_PV4, MATHS_GEOM_PV5</td>
+      <td class="var">MATHS_GEOM_PV1 - MATHS_GEOM_PV5</td>
       <td>Geometry domain</td>
       <td>Grade 10</td>
     </tr>
     <tr>
       <td>Mathematics</td>
       <td>Content domain</td>
-      <td class="var">MATHS_GRME_PV1, MATHS_GRME_PV2, MATHS_GRME_PV3, MATHS_GRME_PV4, MATHS_GRME_PV5</td>
+      <td class="var">MATHS_GRME_PV1 - MATHS_GRME_PV5</td>
       <td>Quantities and measurement domain</td>
       <td>Grade 6</td>
     </tr>
     <tr>
       <td>Mathematics</td>
       <td>Content domain</td>
-      <td class="var">MATHS_MESU_PV1, MATHS_MESU_PV2, MATHS_MESU_PV3, MATHS_MESU_PV4, MATHS_MESU_PV5</td>
+      <td class="var">MATHS_MESU_PV1 - MATHS_MESU_PV5</td>
       <td>Measurement domain</td>
       <td>Grade 10</td>
     </tr>
     <tr>
       <td>Mathematics</td>
       <td>Content domain</td>
-      <td class="var">MATHS_NBOP_PV1, MATHS_NBOP_PV2, MATHS_NBOP_PV3, MATHS_NBOP_PV4, MATHS_NBOP_PV5</td>
+      <td class="var">MATHS_NBOP_PV1 - MATHS_NBOP_PV5</td>
       <td>Numbers and operations domain</td>
       <td>Grade 2 and Grade 6</td>
     </tr>
     <tr>
       <td>Mathematics</td>
       <td>Content domain</td>
-      <td class="var">MATHS_STAT_PV1, MATHS_STAT_PV2, MATHS_STAT_PV3, MATHS_STAT_PV4, MATHS_STAT_PV5</td>
+      <td class="var">MATHS_STAT_PV1 - MATHS_STAT_PV5</td>
       <td>Statistics domain</td>
       <td>Grade 10</td>
     </tr>
     <tr>
       <td>Mathematics</td>
       <td>Cognitive process</td>
-      <td class="var">MATHS_APPL_PV1, MATHS_APPL_PV2, MATHS_APPL_PV3, MATHS_APPL_PV4, MATHS_APPL_PV5</td>
+      <td class="var">MATHS_APPL_PV1 - MATHS_APPL_PV5</td>
       <td>Apply</td>
       <td>Grade 6 and Grade 10</td>
     </tr>
     <tr>
       <td>Mathematics</td>
       <td>Cognitive process</td>
-      <td class="var">MATHS_CONN_PV1, MATHS_CONN_PV2, MATHS_CONN_PV3, MATHS_CONN_PV4, MATHS_CONN_PV5</td>
+      <td class="var">MATHS_CONN_PV1 - MATHS_CONN_PV5</td>
       <td>Know</td>
       <td>Grade 6 and Grade 10</td>
     </tr>
     <tr>
       <td>Mathematics</td>
       <td>Cognitive process</td>
-      <td class="var">MATHS_RESOU_PV1, MATHS_RESOU_PV2, MATHS_RESOU_PV3, MATHS_RESOU_PV4, MATHS_RESOU_PV5</td>
+      <td class="var">MATHS_RESOU_PV1 - MATHS_RESOU_PV5</td>
       <td>Solve</td>
       <td>Grade 6 and Grade 10</td>
     </tr>
@@ -419,92 +423,10 @@ The PASEC 2024 proficiency scores are reported on the same scale as PASEC 2014 a
 
 The scales are divided into a series of proficiency levels that represent increasingly complex knowledge and skills. Each level corresponds to a specific score range and is defined by groups of assessment tasks that share common conceptual and statistical characteristics. Because the levels are hierarchical, students performing at a given level are also expected to be able to complete tasks associated with lower levels.
 
-PASEC defines a **minimum proficiency level** representing the knowledge and skills considered necessary for successful progression through the education system. For mathematics, the minimum proficiency level corresponds to Level 2 in both Grade 2 and Grade 6. For language of instruction, the minimum proficiency level corresponds to Level 3.
+PASEC 2024 defines a **minimum proficiency level** representing the knowledge and skills considered necessary for successful progression through the education system. For mathematics, the minimum proficiency level corresponds to Level 2 in both Grade 2 and Grade 6. For language of instruction, the minimum proficiency level corresponds to Level 3.
 
 For reporting on Sustainable Development Goal (SDG) indicator 4.1.1, the PASEC minimum proficiency level aligns with the SDG minimum proficiency level for Grade 2 (SDG 4.1.1a). In Grade 6, however, the SDG 4.1.1b minimum proficiency level is set one level higher than the PASEC minimum proficiency level.
 
-### Grade 2 reading proficiency scale
-
-```{=html}
-<div class="pasec-table-wrap">
-<table class="pasec-data-table">
-  <tr>
-    <td style="background-color: #E8E8E8">Level</td>
-    <td style="background-color: #E8E8E8">Score</td>
-    <td style="background-color: #E8E8E8">Description of skills</td>
-  </tr>
-  <tr>
-    <td style="background-color: #0F4761; color: #FFFFFF">Level 4</td>
-    <td>&gt;610 points</td>
-    <td>Intermediate reader: moving towards independent reading and understanding sentences and texts Students at this level have achieved a level in the decoding of written text and in listening comprehension that enables them to understand explicit information in short sentences and texts. They are able to combine their decoding skills and their command of spoken language to piece together the literal meaning of a short text</td>
-  </tr>
-  <tr>
-    <td style="background-color: #156082; color: #FFFFFF">Level 3</td>
-    <td>Between 540 and 610 points</td>
-    <td>Learner reader: moving towards the perfecting of decoding skills, listening skills and understanding of written words Students at this level have perfected their listening comprehension and decoding skills, enabling them to focus on understanding words. In listening comprehension, they are able to understand explicit information in a short text which uses familiar vocabulary. They are gradually developing links between spoken and written language and thus improving their decoding skills and expanding their vocabulary. In reading comprehension, students are able to identify the meaning of isolated words.</td>
-  </tr>
-  <tr>
-    <td colspan="3" style="background-color: #E59EDC">PASEC &amp; SDG 4.1.1a Minimum proficiency level</td>
-  </tr>
-  <tr>
-    <td style="background-color: #45B0E1; color: #FFFFFF">Level 2</td>
-    <td>Between 540 and 610 points</td>
-    <td>Learner reader: moving towards the perfecting of decoding skills, listening skills and understanding of written words Students at this level have perfected their listening comprehension and decoding skills, enabling them to focus on understanding words. In listening comprehension, they are able to understand explicit information in a short text which uses familiar vocabulary. They are gradually developing links between spoken and written language and thus improving their decoding skills and expanding their vocabulary. In reading comprehension, students are able to identify the meaning of isolated words.</td>
-  </tr>
-  <tr>
-    <td style="background-color: #83CAEB; color: #FFFFFF">Level 1</td>
-    <td>Between 399 and 469 points</td>
-    <td>Emergent reader: towards developing decoding skills and strengthening listening comprehension skills Students are able to understand very short-spoken messages that use isolated words and refer to familiar objects. They have great difficulty with decoding the written word and with graphophonological identification (letters, syllables, graphemes and phonemes).</td>
-  </tr>
-  <tr>
-    <td style="background-color: #C1E4F5; color: #FFFFFF">Below Level 1</td>
-    <td>&lt; 399 points</td>
-    <td>Students below Level 1 do not sufficiently demonstrate the skills measured by this test in the language of instruction. These students struggle with the knowledge and skills of Level 1.</td>
-  </tr>
-</table>
-</div>
-```
-
-*Source: PASEC 2019 QUALITY OF EDUCATION SYSTEMS IN FRENCH-SPEAKING SUB-SAHARAN AFRICA Table 2.1 pp 47.*
-
-### Grade 2 mathematics proficiency scale
-
-```{=html}
-<div class="pasec-table-wrap">
-<table class="pasec-data-table">
-  <tr>
-    <td style="background-color: #E8E8E8">Level</td>
-    <td style="background-color: #E8E8E8">Score</td>
-    <td style="background-color: #E8E8E8">Description of skills</td>
-  </tr>
-  <tr>
-    <td style="background-color: #3A7C22; color: #FFFFFF">Level 3</td>
-    <td>&gt; 577 points</td>
-    <td>Students are familiar with the verbal number sequence (they can count up to 60 in two minutes) and are able to read numbers, compare numbers, complete number series and perform operations (addition and subtraction) on numbers greater than 50. They can use reasoning in basic problems involving numbers less than 20</td>
-  </tr>
-  <tr>
-    <td style="background-color: #8DD873">Level 2</td>
-    <td>Between 489 and 577 points</td>
-    <td>Students can read numbers, compare numbers, complete logical series and perform operations (addition and subtraction) on numbers less than 50. They can work with the concepts of location in space (e.g. in front of, on top of, etc.). They are beginning to develop reasoning skills in basic problems involving numbers less than 20. They can also identify most simple geometric shapes.</td>
-  </tr>
-  <tr>
-    <td colspan="3" style="background-color: #E59EDC">PASEC and SDG 4.1.1a Minimum proficiency level</td>
-  </tr>
-  <tr>
-    <td style="background-color: #D9F2D0">Level 1</td>
-    <td>Between 400 and 489 points</td>
-    <td>Students are gradually developing their knowledge of mathematical language: they are beginning to read the first numbers (less than 10) and have an initial understanding of quantity (counting, comparison) with numbers less than 20. They show awareness of the relative size of objects and are beginning to identify the first simple geometric shapes</td>
-  </tr>
-  <tr>
-    <td style="background-color: #E8E8E8">Below Level 1</td>
-    <td>&lt; 400 points</td>
-    <td>Students at this level do not sufficiently demonstrate the skills measured by this test in mathematics. These students struggle with the knowledge and skills of Level 1</td>
-  </tr>
-</table>
-</div>
-```
-
-*Source: PASEC 2019 QUALITY OF EDUCATION SYSTEMS IN FRENCH-SPEAKING SUB-SAHARAN AFRICA Table 2.2 pp 53.*
 
 ### Grade 6 reading proficiency scale
 
@@ -553,7 +475,7 @@ For reporting on Sustainable Development Goal (SDG) indicator 4.1.1, the PASEC m
 
 *Source: PASEC 2024: ASSESSMENT OF LEARNING ACHIEVEMENTS AT THE PRIMARY LEVEL*
 
-### Grade 6 Mathematics proficiency scale
+### Grade 6 mathematics proficiency scale
 
 ```{=html}
 <div class="pasec-table-wrap">
@@ -595,7 +517,7 @@ For reporting on Sustainable Development Goal (SDG) indicator 4.1.1, the PASEC m
 
 *Source: PASEC 2024: ASSESSMENT OF LEARNING ACHIEVEMENTS AT THE PRIMARY LEVEL*
 
-## Grade 10 Reading Proficiency Scale
+### Grade 10 reading proficiency scale
 
 ```{=html}
 <div class="pasec-table-wrap">
@@ -634,7 +556,7 @@ For reporting on Sustainable Development Goal (SDG) indicator 4.1.1, the PASEC m
 
 *Source: PASEC 2024: ASSESSMENT OF STUDENT COMPETENCIES AT THE END OF MIDDLE SCHOOL*
 
-## Grade 10 mathematics proficiency scale 
+### Grade 10 mathematics proficiency scale 
 
 ```{=html}
 <div class="pasec-table-wrap">

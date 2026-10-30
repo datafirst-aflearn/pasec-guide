@@ -1,8 +1,8 @@
-# Analysing PASEC 2024 data in Stata {#c06-stata}
+# Analysing PASEC 2024 data in Stata {#c06-stata-2024}
 
 This section provides a practical introduction to analysing PASEC 2024 data in Stata using the `repest` package. It is intended for users with a basic working knowledge of Stata and includes step-by-step examples covering common PASEC analyses.
 
-```{r setup-stata, include=FALSE}
+```{r setup-stata-2024, include=FALSE}
 library(Statamarkdown)
 
 stataexe = "C:/Program Files/Stata18/StataMP-64.exe"
@@ -20,7 +20,7 @@ if (file.exists("profile.do")) unlink("profile.do")
 ```
 
 ```{r}
-#| label: desc-styler
+#| label: desc-styler-2024
 #| include: false
 options(pillar.max_dec_width = 19)
 ```
@@ -29,7 +29,7 @@ options(pillar.max_dec_width = 19)
 
 For hands-on examples we’ll start with the Grade 2 study.
 
-```{stata load-grade2, collectcode=TRUE}
+```{stata load-grade2-2024, collectcode=TRUE}
 * Set the path to your working folder if needed.
 * Paths below are relative to the project root.
 
@@ -42,7 +42,7 @@ It is good practice to run your analysis from a do-file rather than the command 
 
 The original PASEC datasets are provided in French. To encourage wider use of the rich PASEC data, AFLEARN provides *.do* files that translates French variable and value labels to English to the Grade 2, 6, 10 microdata files. You can directly download them from the [AFLEARN's repository](https://github.com/datafirst-aflearn/pasec-guide/tree/main/data)
 
-```{stata apply-labels-grade2, collectcode=TRUE}
+```{stata apply-labels-grade2-2024, collectcode=TRUE}
 * Apply English labels
 
 do "scripts/2024/pasec2024-grd2-labels-en.do"
@@ -294,17 +294,12 @@ These boundaries are set on the PASEC international scale and are the same for a
 ```{stata, collectcode=TRUE}
 *Use PASEC defined levels 
 
-foreach var of varlist MATHS_PV1-MATHS_PV5{ 
-
-gen prop1_`var'=`var'<=400.34 if `var'<. 
-
-gen prop2_`var'=`var'>400.34&`var'<=489.03 if `var'<.	 
-
-gen prop3_`var'=`var'>489.03&`var'<577.73 if `var'<.	 
-
-gen prop4_`var'=`var'>577.73 if `var'<.	 
-
-} 
+foreach var of varlist MATHS_PV1-MATHS_PV5 {
+    gen prop1_`var' = `var'<=400.34 if `var'<.
+    gen prop2_`var' = `var'>400.34 & `var'<=489.03 if `var'<.
+    gen prop3_`var' = `var'>489.03 & `var'<577.73 if `var'<.
+    gen prop4_`var' = `var'>577.73 if `var'<.
+}
 
 repest SVY  if ID_PAYS==21, estimate(mean prop1_MATHS_PV@ prop2_MATHS_PV@ prop3_MATHS_PV@ prop4_MATHS_PV@ ) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1)) 
 ```
@@ -322,7 +317,7 @@ The examples that follow demonstrate how to test for differences in achievement 
 | Within-Country (e.g., Boys vs. Girls in Senegal) | The gap between two demographic subgroups who share the same sampling strata, schools, and teachers. | High covariance. Because groups are clustered together in the same schools, their errors are correlated. |
 | Between-Country (e.g., Senegal vs Benin) | The gap between two entirely independent populations with completely separate sampling frames | Zero covariance. Sampling units in Country A have no mathematical relationship to sampling units in Country B |
 
-In `repest` you should use `over` for within-country comparisons and `by` for between-country comparisons. You must not use `over` for countries. When using `svy = "SVY"`, THE `over()` option is designed for within-country subgroup comparisons only. Using regression achieves the same goal and works correctly with the SVY option.
+In `repest` you should use `over` for within-country comparisons and `by` for between-country comparisons. You must not use `over` for countries. When using `svy = "SVY"`, The `over()` option is designed for within-country subgroup comparisons only. Using regression achieves the same goal and works correctly with the SVY option.
 
 #### Testing for differences within countries: between boys and girls
 
@@ -354,7 +349,7 @@ Are there differences in mean mathematics scores between Chad and Senegal?
 ```{stata, collectcode=TRUE}
 *Test differences in mathematics scores between Chad and Senegal 
 
-repest SVY if ID_PAYS==19 & ID_PAYS==20, estimate(reg MATHS_PV@ i.ID_PAYS) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1))  
+repest SVY if ID_PAYS==19 | ID_PAYS==20, estimate(reg MATHS_PV@ i.ID_PAYS) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(50) variancefactor(1))  
 ```
 
 Mathematics proficiency levels are $30.4$ points lower in Chad compared to Senegal, a statistically significant difference.
@@ -391,26 +386,32 @@ The gap between boys and girls increases from $19.0$ points at the $25th$ percen
 
 Now let’s use the Grade $6$ data. There are $100$ replicate weights so we will need to replace `NREP(50)` with `NREP(100)` in the `svyparm()` suboptions.
 
-Grade 6 setup
+The Grade 6 setup is as follows
 
 ```{stata, eval=FALSE, include=TRUE}
 repest SVY [if] [in] , estimate(cmd [,cmd_options]) [options] svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(100) variancefactor(1)) 
 ```
 
-In this example, we’ll analyze the association between students’ math scores (*MATHS_PV\@*) and their gender (*qe6a_03*) and socio-economic status (*SES*) in Congo. The *SES* variable is a composite socioeconomic status index derived from the PASEC 2024 household questionnaire.
+In this example, we’ll analyse the association between students’ math scores (**MATHS_PV\@**) and their gender (**qe6a_03**) and socio-economic status (**SES**) in Congo. The *SES* variable is a composite socioeconomic status index derived from the PASEC 2024 household questionnaire.
 
-```{stata load-grade6, collectcode=TRUE}
+Firstly, load the microdata below
+
+```{stata load-grade6-2024, collectcode=TRUE}
 * Load Grade 6 data
 use "scripts/2024/PASEC2024_GRADE6.dta", clear
 ```
 
-```{stata apply-labels-grade6, collectcode=TRUE}
+Then, apply the English variable and value labels to the microdata as follows:
+
+```{stata apply-labels-grade6-2024, collectcode=TRUE}
 * Apply English labels
 do "scripts/2024/pasec2024-grd6-labels-en.do"
 
 * Show both numeric values and value labels
 numlabel, add
 ```
+
+We need the **girl** indicator variable 
 
 ```{stata, collectcode=TRUE}
 * Fist generate an indicator variable for girl 
@@ -419,22 +420,23 @@ gen girl=qe6a_03==2 if qe6a_03<9
 
 ```
 
+Now, we set up to test the association between the mathematics scores and socio-economic status and gender 
+
 ```{stata, collectcode=TRUE}
 *Association between mathematics scores and socio-economic status and gender 
 
-repest SVY if ID_PAYS==6, estimate(reg MATHS_PV@ ses girl) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(100) variancefactor(1)) results(add(r2 N)) 
+repest SVY if ID_PAYS==6, estimate(reg MATHS_PV@ SES girl) svyparm(NBpv(5) final_weight_name(rwgt0) rep_weight_name(rwgt) NREP(100) variancefactor(1)) results(add(r2 N)) 
 ```
 
-The `results(add(r2 N))` option: This option allows you to add extra statistics to the results table, which Stata stores by default. Here, we add $R^2$ (`e_r2`), a measure of model fit, and number of observations (`e_N`). Note that `repest` stores these additional statistics internally as `e_r2` and `e_N`, and these are the names shown in the output table.
+The regression estimates the association between mathematics proficiency, socioeconomic status (*SES*), and gender among Grade 6 students in Congo while correctly accounting for both plausible values and the PASEC 2024 replicate-weight design.
 
-The regression estimates the association between mathematics proficiency, socioeconomic status (*SES*), and gender among Grade $6$ students in Congo while correctly accounting for both plausible values and the PASEC 2024 replicate-weight design.
+The results indicate a strong positive association between socioeconomic status and mathematics achievement. A one-unit increase in the *SES* index is associated with an increase of approximately $1.81$ points in mathematics proficiency (*coefficient* $= 1.81$, p $< 0.001$). This relationship is statistically significant, suggesting that students from more advantaged socioeconomic backgrounds tend to perform better in mathematics.
 
-The results indicate a strong positive association between socioeconomic status and mathematics achievement. A one-unit increase in the *SES* index is associated with an increase of approximately $3.85$ points in mathematics proficiency (coefficient $= 3.85$, $p < 0.001$). This relationship is statistically significant, suggesting that students from more advantaged socioeconomic backgrounds tend to perform better in mathematics.
+The coefficient on the *girl* indicator is $4.13$ (*p* $= 0.181$), indicating that girls score, on average, about $4$ points higher than boys with similar socioeconomic status. However, p-value reveals that this relationship is statistically insignificant. Because *SES* is included in the model, this estimated gender gap reflects differences between boys and girls after accounting for socioeconomic background.
 
-The coefficient on the female indicator (girl) is $-9.11$ ($p < 0.05$), indicating that girls score, on average, about $9$ points lower than boys with similar socioeconomic status. Because *SES* is included in the model, this estimated gender gap reflects differences between boys and girls after accounting for socioeconomic background.
-
-The constant term ($286$) represents the predicted mathematics score for a boy with an *SES* value of zero. While the intercept is necessary for estimation, it is typically of limited substantive interest because an *SES* value of zero may not correspond to a meaningful student profile.
+The constant term ($370$) represents the predicted mathematics score for a boy with an *SES* value of zero. While the intercept is necessary for estimation, it is typically of limited substantive interest because an *SES* value of zero may not correspond to a meaningful student profile.
 
 Overall, the results suggest that both socioeconomic status and gender are important correlates of mathematics achievement in Congo. Higher socioeconomic status is associated with better performance, while girls perform less well than boys on average, even after controlling for socioeconomic differences.
 
-It is important to remember that these coefficients describe associations rather than causal effects. The regression does not imply that increasing a student's socioeconomic status by one unit would necessarily increase their mathematics score by $3.85$ points. Other factors associated with socioeconomic status, such as school quality, parental education, household resources, and learning opportunities, may also contribute to the observed relationship.
+It is important to remember that these coefficients describe associations rather than causal effects. The regression does not imply that increasing a student’s socioeconomic status by one unit would necessarily increase their mathematics score by $1.81$ points. Other factors associated with socioeconomic status, such as school quality, parental education, household resources, and learning opportunities, may also contribute to the observed relationship.
+

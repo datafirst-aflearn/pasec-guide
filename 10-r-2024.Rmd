@@ -1,4 +1,4 @@
-# Analysing PASEC 2024 data in R {#c07-r}
+# Analysing PASEC 2024 data in R {#c07-r-2024}
 
 This section provides a practical introduction to analysing PASEC 2024 data in R. It is intended for users with a basic working knowledge of R and includes step-by-step examples covering common PASEC analyses.
 
@@ -467,7 +467,7 @@ The regression estimates the association between mathematics proficiency, socioe
 
 The results indicate a strong positive association between socioeconomic status and mathematics achievement. A one-unit increase in the *SES* index is associated with an increase of approximately $1.81$ points in mathematics proficiency (*coefficient* $= 1.81$, p $< 0.001$). This relationship is statistically significant, suggesting that students from more advantaged socioeconomic backgrounds tend to perform better in mathematics.
 
-The coefficient on the female indicator (*girl*) is $4.13$ (*p* $= 0.181$), indicating that girls score, on average, about $4$ points higher than boys with similar socioeconomic status. However, p-value reveals that this relationship is statistically insignificant. Because *SES* is included in the model, this estimated gender gap reflects differences between boys and girls after accounting for socioeconomic background.
+The coefficient on the *girl* indicator is $4.13$ (*p* $= 0.181$), indicating that girls score, on average, about $4$ points higher than boys with similar socioeconomic status. However, p-value reveals that this relationship is statistically insignificant. Because *SES* is included in the model, this estimated gender gap reflects differences between boys and girls after accounting for socioeconomic background.
 
 The constant term ($370$) represents the predicted mathematics score for a boy with an *SES* value of zero. While the intercept is necessary for estimation, it is typically of limited substantive interest because an *SES* value of zero may not correspond to a meaningful student profile.
 
